@@ -1,0 +1,101 @@
+# DO NOT MODIFY THIS!
+# ADD OVERRIDES IN `data/i18n` INSTEAD.
+
+# UI
+ui.none = None
+ui.loading = Loading
+ui.yes = Yes
+ui.no = No
+
+# Navigation
+app.console = Console
+nav.cate.functions = Functions
+nav.item.classroom = Classroom Signin
+nav.item.run = Run Signin
+nav.cate.system = System
+nav.item.status = System Status
+nav.item.logs = Log Data
+nav.cate.about = About
+nav.item.about = About
+
+# Classroom
+cls.nolesson = No Check-in In Progress
+cls.nolesson.1 = Check this page when the check-in starts.
+cls.nolesson.2 = If detection issues occured, check the server configuration and timezone.
+cls.currlesson = Current Lesson
+cls.nostudent = No students found
+cls.submit.title = Submitting Changes
+cls.submit.progress = "[Classroom] Submitting changes... "
+cls.submit.currname = "Current name: "
+cls.submit.dontclose = Don't close the page, for it will terminate the operation.
+cls.state.revoke = Revoking
+cls.state.face = Face
+cls.state.card = Card
+cls.state.mark_face = Marked as "face"
+cls.state.mark_card = Marked as "card"
+cls.state.exclude = Excluded
+cls.state.leave = Leave
+cls.state.none = Absent
+cls.toast.refresh.success = Data refreshed.
+cls.toast.refresh.fail = Refresh failed.
+cls.alert.clear.title = Clear Marks
+cls.alert.clear.1 = Remove all unsubmitted marks?
+cls.toast.clear.success = Cleared all marks.
+cls.alert.markall.title = Mark all
+cls.alert.markall.1 = Mark all students as checked-in (except excluded ones)?<br />Do not mark those who should not check-in!
+cls.toast.nodata = Student info not obtained yet.
+cls.toast.markall.success = Successfully marked all.
+cls.toast.submit.nochange = No pending changes.
+cls.alert.submit.1 = ${0} check-in
+cls.alert.submit.2 = ${0} revoke
+cls.alert.submit.3 = Submit all changes?<br /><ul>${0}</ul>Note that submitted changes may not be undone.<br />
+cls.alert.submit.title = Submit Changes
+cls.toast.submit.finish = Changes submitted. ${0} success, ${1} failure.
+cls.alert.restart.title = Changes Submitted
+cls.alert.restart.1 = Changes submitted.<br />To make sure that the changes make effect, we suggest restarting the terminal.<br />Restart now?
+
+# Status
+status.title = System Status
+status.key = Item
+status.val = Value
+status.term.stop = Shutdown Terminal
+status.term.start = Start Terminal
+status.reboot = Reboot Server
+status.item.server_os = Server OS
+status.item.php_ver = PHP Version
+status.item.namespace = Namespace
+status.item.port = Service Port
+status.item.ver = Service Version
+status.item.webroot = Web Root
+status.item.db_path = Target DB
+status.item.lesson = Checking-in Lesson
+status.item.proc_name = Terminal Process
+status.item.proc_path = Terminal Start File
+status.item.terminal_state = Terminal Running
+status.item.launcher_state = Launcher Running
+status.item.time = Refresh Time
+status.toast.except = Error occured.
+status.toast.stop = Terminal stopped.
+status.toast.stopped = Terminal already stopped.
+status.toast.start = Terminal started.
+status.toast.started = Terminal already running.
+status.toast.restarted = Terminal restarted.
+status.toast.launcher = Operation failed because Desktop Launch Daemon is not running.
+status.toast.reboot = Reboot command issued. Please refresh after the reboot completes.
+status.reboot.title = Reboot Server
+status.reboot.1 = Rebooting server!<br>Note that the server may take a long time to reboot. Do not reboot at the moment before the check-in ends to avoid missing data.
+status.reboot.2 = Are you sure?
+
+# Log
+log.date = Log Date
+log.query = Get Logs
+log.empty = Click the button above to get logs
+log.fail = Load failed
+log.bad = Wrong date format.
+log.no = ${0} has no log data.
+log.below = ${0}'s logs is as below:
+
+# About
+about.text = PHP/Apache based web application, which is used for inspecting and managing check-in information on a smart board.
+about.version = "Version: "
+about.author = 祈雨project · Made by Singin2 Project Group

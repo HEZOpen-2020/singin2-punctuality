@@ -1,0 +1,101 @@
+# DO NOT MODIFY THIS!
+# ADD OVERRIDES IN `data/i18n` INSTEAD.
+
+# UI
+ui.none = 无
+ui.loading = 加载中
+ui.yes = 是
+ui.no = 否
+
+# Navigation
+app.console = 控制台
+nav.cate.functions = 功能
+nav.item.classroom = 教室考勤
+nav.item.run = 晨跑考勤
+nav.cate.system = 系统
+nav.item.status = 系统状态
+nav.item.logs = 日志数据
+nav.cate.about = 关于
+nav.item.about = 关于
+
+# Classroom
+cls.nolesson = 没有正在考勤的课程
+cls.nolesson.1 = 请在考勤开始后检查此页面。
+cls.nolesson.2 = 若检测存在问题，请检查服务端配置和时区设置。
+cls.currlesson = 当前课程
+cls.nostudent = 未发现任何考勤人员
+cls.submit.title = 正在提交更改
+cls.submit.progress = "[教室考勤] 正在提交更改... "
+cls.submit.currname = 当前姓名：
+cls.submit.dontclose = 请勿关闭页面，这将导致操作中断。
+cls.state.revoke = 标记为撤销签到
+cls.state.face = 人脸
+cls.state.card = 刷卡
+cls.state.mark_face = 标记为人脸签到
+cls.state.mark_card = 标记为刷卡签到
+cls.state.exclude = 排除考勤
+cls.state.leave = 请假
+cls.state.none = 未签到
+cls.toast.refresh.success = 数据已更新。
+cls.toast.refresh.fail = 刷新失败。
+cls.alert.clear.title = 清空标记
+cls.alert.clear.1 = 确定清空所有未提交的标记？
+cls.toast.clear.success = 已清空标记。
+cls.alert.markall.title = 标记全部
+cls.alert.markall.1 = 确定标记所有同学签到（不在校内的除外）？<br />请不要标记不该签到的同学！
+cls.toast.nodata = 人员信息尚未获取。
+cls.toast.markall.success = 标记完成
+cls.toast.submit.nochange = 没有待提交的信息。
+cls.alert.submit.1 = 补签 ${0} 人
+cls.alert.submit.2 = 撤销 ${0} 人
+cls.alert.submit.3 = 确定提交所有更改？<br /><ul>${0}</ul>请注意已提交的签到信息可能无法撤销。<br />
+cls.alert.submit.title = 提交更改
+cls.toast.submit.finish = 更改提交完成，${0} 个成功，${1} 个失败。
+cls.alert.restart.title = 提交完成
+cls.alert.restart.1 = 更改提交完成。<br />为确保更改生效，建议立即重启终端程序。<br />是否立即重启？
+
+# Status
+status.title = 系统状态
+status.key = 项目
+status.val = 值
+status.term.stop = 关闭终端程序
+status.term.start = 启动终端程序
+status.reboot = 重启服务器
+status.item.server_os = 服务器系统
+status.item.php_ver = PHP 版本
+status.item.namespace = 命名空间
+status.item.port = 服务端口
+status.item.ver = 服务版本
+status.item.webroot = Web 根目录
+status.item.db_path = 目标数据库
+status.item.lesson = 正在考勤的课程
+status.item.proc_name = 终端进程名
+status.item.proc_path = 终端启动文件
+status.item.terminal_state = 终端程序运行中
+status.item.launcher_state = 启动器运行中
+status.item.time = 刷新时间
+status.toast.except = 异常无法操作。
+status.toast.stop = 已关闭终端程序。
+status.toast.stopped = 终端程序不在运行。
+status.toast.start = 已启动终端程序。
+status.toast.started = 终端程序已经在运行。
+status.toast.restarted = 终端程序已重启。
+status.toast.launcher = 桌面启动器不在运行，因而无法操作。
+status.toast.reboot = 重启命令已发送，请在重启完成后刷新页面。
+status.reboot.title = 重启服务器
+status.reboot.1 = 即将重启服务器！<br>请注意服务器重启需要亿点时间。不要在打卡即将结束时重启，否则可能导致数据未上传。
+status.reboot.2 = 确定重启？
+
+# Log
+log.date = 日志日期
+log.query = 查询日志
+log.empty = 请点击上方按钮查询
+log.fail = 加载失败
+log.bad = 日期格式不正确。
+log.no = ${0} 没有日志数据。
+log.below = ${0} 的日志数据如下：
+
+# About
+about.text = 基于 PHP/Apache 的 Web 应用程序，用于同步查看和管理智能班牌上的考勤信息。
+about.version = 版本：
+about.author = 祈雨project · Singin2 项目组出品

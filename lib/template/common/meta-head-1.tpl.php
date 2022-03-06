@@ -6,11 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link id="page-icon" rel="shortcut icon" href="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>加载中 - <?php echo htmlspecial(APP_NAME) ?></title>
+	<title><?php LNGe('ui.loading') ?> - <?php echo htmlspecial(APP_NAME) ?></title>
 	<?php
 		load_css('mdui/css/mdui');
 		load_css('css/common');
 		load_css('font/skf/part-1');
+		load_js_e(BASIC_URL . 'i18n?v=' . VERSION);
 	?>
 	<script>
 		var G = <?php echo data_json_encode([

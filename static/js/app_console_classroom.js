@@ -37,25 +37,25 @@ $(() => {
     var state_message = (obj) => {
         var state = determine_state(obj, true);
         if(state == 'revoke') {
-            return '标记为撤销签到';
+            return LNG('cls.state.revoke');
         }
         if(state == 'face' || state == 'card') {
             var dk_time = new Date(obj.dk_time * 1000);
-            return (obj.dk_method == 'face' ? '人脸' : '刷卡') + ' · ' + /*date_format_date(dk_time) + ' ' +*/ date_format_seconds(dk_time);
+            return (obj.dk_method == 'face' ? LNG('cls.state.face') : LNG('cls.state.card')) + ' · ' + /*date_format_date(dk_time) + ' ' +*/ date_format_seconds(dk_time);
         }
         if(state == 'exclude') {
-            return '考勤开始时不在校内';
+            return LNG('cls.state.exclude');
         }
         if(state == 'leave') {
-            return '请假';
+            return LNG('cls.state.leave');
         }
         if(state == 'mark-face') {
-            return '标记为人脸签到';
+            return LNG('cls.state.mark_face');
         }
         if(state == 'mark-card') {
-            return '标记为刷卡签到';
+            return LNG('cls.state.mark_card');
         }
-        return '未签到';
+        return LNG('cls.state.none');
     };
     var state_icon = (obj) => {
         var state = determine_state(obj);
@@ -202,21 +202,21 @@ $(() => {
         var state = await refresh();
         $(this).disabled(false);
         if (state) {
-            mdui.snackbar('数据已更新。', {timeout: 500});
+            mdui.snackbar(LNG('cls.toast.refresh.success'), {timeout: 500});
         } else {
-            mdui.snackbar('刷新失败。', {timeout: 2000});
+            mdui.snackbar(LNG('cls.toast.refresh.fail'), {timeout: 2000});
         }
     });
     $('.singin-classroom-action-clear').on('click', async function() {
-        var state = await mdui.confirm_async('确定清空所有未提交的标记？', '清空标记');
+        var state = await mdui.confirm_async(LNG('cls.alert.clear.1'), LNG('cls.alert.clear.title'));
         if(state) {
             markings = [];
             actuate_all();
-            mdui.snackbar('已清空标记。', {timeout: 500});
+            mdui.snackbar(LNG('cls.toast.clear.success'), {timeout: 500});
         }
     });
     $('.singin-classroom-action-markall').on('click', async function() {
-        var state = await mdui.confirm_async('确定标记所有同学签到（不在校内的除外）？<br />请不要标记不该签到的同学！', '标记全部');
+        var state = await mdui.confirm_async(LNG('cls.alert.markall.1'), LNG('cls.alert.markall.title'));
         if(state) {
             if(G.classroom.singing_students) {
                 for(let student of G.classroom.singing_students) {
@@ -226,9 +226,9 @@ $(() => {
                     }
                 }
                 actuate_all();
-                mdui.snackbar('标记完成。', {timeout: 500});
+                mdui.snackbar(LNG('cls.toast.markall.success'), {timeout: 500});
             } else {
-                mdui.snackbar('人员信息尚未获取。', {timeout: 2000});
+                mdui.snackbar(LNG('cls.toast.nodata'), {timeout: 2000});
             }
         }
     });
@@ -251,17 +251,17 @@ $(() => {
             }
             pending_changes.sort(() => (Math.random() - 0.5));
             if(dk_count + revoke_count == 0) {
-                mdui.snackbar('没有待提交的信息。', {timeout: 2000});
+                mdui.snackbar(LNG('cls.toast.submit.nochange'), {timeout: 2000});
                 return;
             }
             let text_frag = '';
             if(dk_count > 0) {
-                text_frag += `<li>补签 ${dk_count} 人</li>`;
+                text_frag += `<li>${LNG('cls.alert.submit.1', dk_count)}</li>`;
             }
             if(revoke_count > 0) {
-                text_frag += `<li>撤销 ${revoke_count} 人</li>`;
+                text_frag += `<li>${LNG('cls.alert.submit.2', revoke_count)}</li>`;
             }
-            var state = await mdui.confirm_async('确定提交所有更改？<br /><ul>' + text_frag + '</ul>请注意已提交的签到信息将无法撤销，因此请确认信息无误。<br />', '提交更改');
+            var state = await mdui.confirm_async(LNG('cls.alert.submit.3', text_frag), LNG('cls.alert.submit.title'));
             if(!state) return;
 
             $('.singin-classroom-action-send').disabled(true);
@@ -298,28 +298,28 @@ $(() => {
                 }
             }
             send_dialog.close();
-            mdui.snackbar(`更改提交完成，${success_count} 个成功，${failure_count} 个失败。`, {timeout: 4000});
+            mdui.snackbar(LNG('cls.toast.submit.finish', success_count, failure_count), {timeout: 4000});
             sending = false;
 
             // actuate_all();
             await refresh();
 
             if(success_count > 0) {
-                if(await mdui.confirm_async('更改提交完成。<br />为确保更改生效，建议立即重启终端程序。<br />是否立即重启？', '提交完成')) {
+                if(await mdui.confirm_async(LNG('cls.alert.restart.1'), LNG('cls.alert.restart.title'))) {
                     var data = await fetch_json(G.basic_url + 'api/system/terminal/restart');
                     if(!data) {
-                        mdui.snackbar('异常无法操作。', {timeout: 2000});
+                        mdui.snackbar(LNG('status.toast.except'), {timeout: 2000});
                     } else if(data.code == 500) {
-                        mdui.snackbar('桌面启动器不在运行，因而无法操作。', {timeout: 2000});
+                        mdui.snackbar(LNG('status.toast.launcher'), {timeout: 2000});
                     } else {
-                        mdui.snackbar('已重启终端程序。', {timeout: 2000});
+                        mdui.snackbar(LNG('status.toast.restarted'), {timeout: 2000});
                     }
                 }
             }
 
             $('.singin-classroom-action-send').disabled(false);
         } else {
-            mdui.snackbar('人员信息尚未获取。', {timeout: 2000});
+            mdui.snackbar(LNG('cls.toast.nodata'), {timeout: 2000});
         }
     });
     $('.singin-classroom-send-break').on('click', () => {

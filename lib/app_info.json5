@@ -1,7 +1,7 @@
 [
 	{
 		id: 'console',
-		label: '控制台',
+		label: 'app.console',
 		auth: 'none',
 		exclude: true
 	}

@@ -14,7 +14,7 @@ $(async () => {
 			var add_status_line = function(name, key, map = (x) => x) {
 				var text = G.system_status[key];
 				if(text === true || text === false) {
-					text = (text ? '是' : '否');
+					text = (text ? LNG('ui.yes') : LNG('ui.no'));
 				}
 				text = map(text);
 				$('.singin-status').append(
@@ -24,19 +24,19 @@ $(async () => {
 					.append($('<td></td>').addClass('singin-status-value').text(text))
 				);
 			};
-			add_status_line('服务端系统', 'server_os');
-			add_status_line('PHP 版本', 'php_version');
-			add_status_line('命名空间', 'namespace');
-			add_status_line('服务端口', 'server_port');
-			add_status_line('服务版本', 'version');
-			add_status_line('Web 根目录', 'document_root');
-			add_status_line('目标数据库', 'db_path');
-			add_status_line('正在考勤的课程', 'singing_lesson');
-			add_status_line('终端进程名', 'proc_name');
-			add_status_line('终端程序', 'proc_path');
-			add_status_line('终端程序运行中', 'terminal_running');
-			add_status_line('桌面启动器运行中', 'desklaunch_daemon');
-			add_status_line('刷新时间', 'system_time', (x) => date_format(new Date(x * 1000)));
+			add_status_line(LNG('status.item.server_os'), 'server_os');
+			add_status_line(LNG('status.item.php_ver'), 'php_version');
+			add_status_line(LNG('status.item.namespace'), 'namespace');
+			add_status_line(LNG('status.item.port'), 'server_port');
+			add_status_line(LNG('status.item.ver'), 'version');
+			add_status_line(LNG('status.item.webroot'), 'document_root');
+			add_status_line(LNG('status.item.db_path'), 'db_path');
+			add_status_line(LNG('status.item.lesson'), 'singing_lesson');
+			add_status_line(LNG('status.item.proc_name'), 'proc_name');
+			add_status_line(LNG('status.item.proc_path'), 'proc_path');
+			add_status_line(LNG('status.item.terminal_state'), 'terminal_running');
+			add_status_line(LNG('status.item.launcher_state'), 'desklaunch_daemon');
+			add_status_line(LNG('status.item.time'), 'system_time', (x) => date_format(new Date(x * 1000)));
 
 			// $('.singin-stop-terminal, .singin-start-terminal').disabled(!G.system_status['desklaunch_daemon']);
 			if(firstState) {
@@ -54,15 +54,15 @@ $(async () => {
 		var rid = stop_terminal_t = random_ele_id();
 		var data = await fetch_json(G.basic_url + 'api/system/terminal/stop');
 		if(data === null) {
-		    mdui.snackbar('异常无法操作。', {timeout: 2000});
+		    mdui.snackbar(LNG('status.toast.except'), {timeout: 2000});
 		    return;
 		}
 		if(data.code == 200) {
-			mdui.snackbar('已关闭终端程序。', {timeout: 2000});
+			mdui.snackbar(LNG('status.toast.stop'), {timeout: 2000});
 		} else if(data.code == 201) {
-			mdui.snackbar('终端程序不在运行。', {timeout: 2000});
+			mdui.snackbar(LNG('status.toast.stopped'), {timeout: 2000});
 		} else if(data.code == 500) {
-			mdui.snackbar('桌面启动器不在运行，因而无法操作。', {timeout: 2000});
+			mdui.snackbar(LNG('status.toast.launcher'), {timeout: 2000});
 		}
 		if(rid != stop_terminal_t) return;
 		$('.singin-stop-terminal, .singin-start-terminal').disabled(false);
@@ -74,15 +74,15 @@ $(async () => {
 		var rid = stop_terminal_t = random_ele_id();
 		var data = await fetch_json(G.basic_url + 'api/system/terminal/start');
 		if(data === null) {
-		    mdui.snackbar('异常无法操作。', {timeout: 2000});
+		    mdui.snackbar(LNG('status.toast.except'), {timeout: 2000});
 		    return;
 		}
 		if(data.code == 200) {
-			mdui.snackbar('已启动终端程序。', {timeout: 2000});
+			mdui.snackbar(LNG('status.toast.start'), {timeout: 2000});
 		} else if(data.code == 201) {
-			mdui.snackbar('终端程序已经在运行。', {timeout: 2000});
+			mdui.snackbar(LNG('status.toast.started'), {timeout: 2000});
 		} else if(data.code == 500) {
-			mdui.snackbar('桌面启动器不在运行，因而无法操作。', {timeout: 2000});
+			mdui.snackbar(LNG('status.toast.launcher'), {timeout: 2000});
 		}
 		if(rid != stop_terminal_t) return;
 		$('.singin-start-terminal, .singin-stop-terminal').disabled(false);
@@ -102,17 +102,17 @@ $(() => {
 			$('.singin-log-display').text(str);
 		};
 		if(data === null) {
-		    show_result('加载失败');
+		    show_result(LNG('log.fail'));
 		    return;
 		}
 		if(data.code == 400) {
-			show_result('日期格式不正确。');
+			show_result(LNG('log.bad'));
 		} else {
 			var text = data.data.join("\n").trim();
 			if(text == '') {
-				show_result(datestr + ' 没有日志数据。');
+				show_result(LNG('log.no', datestr));
 			} else {
-				show_result(datestr + ' 的日志数据如下：' + "\n" + text);
+				show_result(LNG('log.below', datestr) + "\n" + text);
 			}
 		}
 		$('.singin-log-query').disabled(false);
@@ -126,11 +126,11 @@ $(() => {
 	});
 	
 	$('.singin-reboot').on('click', async () => {
-	    var state = await mdui.confirm_async('即将重启服务器！<br>请注意服务器重启需要亿点时间。不要在打卡即将结束时重启，否则可能导致数据未上传。', '重启服务器');
+	    var state = await mdui.confirm_async(LNG('status.reboot.1'), LNG('status.reboot.title'));
 	    if(!state) return;
-	    state = await mdui.confirm_async('确定重启？', '重启服务器');
+	    state = await mdui.confirm_async(LNG('status.reboot.2'), LNG('status.reboot.title'));
 	    if(!state) return;
-	    mdui.snackbar('重启指令已发送，请在重启完成后刷新页面。')
+	    mdui.snackbar(LNG('status.toast.reboot'))
 	    fetch_json(G.basic_url + 'api/system/reboot');
 	});
 });

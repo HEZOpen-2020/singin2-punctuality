@@ -13,9 +13,12 @@ define('CONTROLLER', LIB . 'controller/');
 define('TEMPLATE', LIB . 'template/');
 define('FONT', LIB . 'font/');
 define('STAMP', LIB . 'stamp/');
+define('I18N', LIB . 'i18n/lang/');
+define('I18N_USER', DATA_PATH . 'i18n/');
 
 require(LIB . 'config_default.php');
 require(FUNC . 'index.php');
+require(LIB . 'i18n/i18nCore.php');
 require(LIB . 'router/DataDrivenRouter.router.php');
 
 // 检查操作系统

@@ -3,6 +3,9 @@
 	children: {
 		'api': {
 			target: 'api.json5'
+		},
+		'i18n': {
+			dest: 'i18n'
 		}
 	}
 }

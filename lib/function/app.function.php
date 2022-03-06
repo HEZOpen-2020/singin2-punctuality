@@ -23,7 +23,7 @@ function app_get($id) {
  */
 function show_app_title($id) {
 	show_icon(BASIC_URL . 'static/ico/app_' . $id . '.png');
-	show_title(app_get($id)['label']);
+	show_title(LNG(app_get($id)['label']));
 	echo '<script>G.app_id = "' . addslashes($id) . '";</script>' . "\n";
 	echo '<script>G.app_instance_id = random_ele_id();</script>' . "\n";
 }
@@ -40,7 +40,7 @@ function app_header($id, $buttons = []) {
 			</a>
 			<a href="<?php echo BASIC_URL ?>" class="mdui-typo-headline mdui-hidden-xs-down"><?php echo APP_NAME ?></a>
 			<span class="singin-appbar-delimiter mdui-hidden-xs-down">/</span>
-			<a href="javascript:;" class="mdui-typo-title"><?php echo app_get($id)['label'] ?></a>
+			<a href="javascript:;" class="mdui-typo-title"><?php echo LNG(app_get($id)['label']) ?></a>
 			<div class="mdui-toolbar-spacer"></div>
 			<?php
 				foreach($buttons as $btn) {

@@ -1,5 +1,7 @@
 <?php if(!defined('IN_SYSTEM')) exit;//Silence is golden ?><?php
 
+ignore_user_abort(true);
+
 $lesson = get_singing_lesson();
 $curr_time = time();
 if(!$lesson || $lesson['id'] != $_REQUEST['lesson']) {

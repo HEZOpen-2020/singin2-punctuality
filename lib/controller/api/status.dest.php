@@ -3,7 +3,7 @@
 $lesson = get_singing_lesson();
 // $lesson = null;
 $lesson_id = null;
-$lesson_display = '无';
+$lesson_display = LNG('ui.none');
 if($lesson) {
     $lesson_id = $lesson['id'];
     $lesson_display = substr($lesson['id'], 0, 8) . ' ' . $lesson['name'] . ' ' . $lesson['classroom'];

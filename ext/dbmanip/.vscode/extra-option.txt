@@ -1,1 +1,0 @@
--std=c++17 -lm -Wall -Wl,--stack=998244353 -m64
