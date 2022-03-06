@@ -7,3 +7,5 @@ TestProgram.e
 archive
 _tool
 data
+data/log
+data/i18n
