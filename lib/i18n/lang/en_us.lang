@@ -16,7 +16,7 @@ nav.cate.system = System
 nav.item.status = System Status
 nav.item.logs = Log Data
 nav.cate.about = About
-nav.item.about = About
+nav.item.about = About This Project
 
 # Classroom
 cls.nolesson = No Check-in In Progress

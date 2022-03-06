@@ -16,7 +16,7 @@ nav.cate.system = 系统
 nav.item.status = 系统状态
 nav.item.logs = 日志数据
 nav.cate.about = 关于
-nav.item.about = 关于
+nav.item.about = 关于此项目
 
 # Classroom
 cls.nolesson = 没有正在考勤的课程
