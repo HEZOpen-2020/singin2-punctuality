@@ -1,0 +1,38 @@
+[08:12:26][L][SYSTEM] Terminal stop requested.
+[08:12:28][L][SYSTEM] Terminal stopped.
+[08:12:29][L][SYSTEM] Terminal start requested.
+[08:12:33][L][SYSTEM] Terminal started.
+[08:16:48][L][SYSTEM] Terminal stop requested.
+[08:16:50][L][SYSTEM] Terminal stopped.
+[08:16:51][L][SYSTEM] Terminal start requested.
+[08:16:54][L][SYSTEM] Terminal started.
+[09:02:32][L][SYSTEM] Terminal start requested.
+[09:02:32][L][SYSTEM] Terminal is already running.
+[09:04:46][L][SYSTEM] Terminal stop requested.
+[09:04:49][L][SYSTEM] Terminal stopped.
+[09:04:49][L][SYSTEM] Terminal stop requested.
+[09:04:51][L][SYSTEM] Terminal already stopped.
+[09:04:55][L][SYSTEM] Terminal start requested.
+[09:04:58][L][SYSTEM] Terminal started.
+[09:06:17][L][SYSTEM] Terminal start requested.
+[09:06:18][L][SYSTEM] Terminal is already running.
+[17:29:46][L][SYSTEM] Terminal stop requested.
+[17:29:46][E][SYSTEM] DesktopLaunchDaemon is not running and terminal stop is ignored.
+[17:36:44][L][SYSTEM] Terminal stop requested.
+[17:36:45][L][SYSTEM] Terminal stopped.
+[17:36:48][L][SYSTEM] Terminal start requested.
+[17:36:50][L][SYSTEM] Terminal started.
+[17:39:49][L][SYSTEM] Terminal start requested.
+[17:39:52][L][SYSTEM] Terminal started.
+[17:41:50][L][SYSTEM] Terminal start requested.
+[17:41:52][L][SYSTEM] Terminal started.
+[21:43:18][L][SYSTEM] Terminal stop requested.
+[21:43:19][L][SYSTEM] Terminal stopped.
+[21:43:20][L][SYSTEM] Terminal start requested.
+[21:43:22][L][SYSTEM] Terminal started.
+[21:44:17][L][SYSTEM] Terminal start requested.
+[21:44:23][L][SYSTEM] Terminal start requested.
+[21:49:50][L][SYSTEM] Terminal stop requested.
+[21:49:51][L][SYSTEM] Terminal stopped.
+[21:49:53][L][SYSTEM] Terminal start requested.
+[21:49:55][L][SYSTEM] Terminal started.

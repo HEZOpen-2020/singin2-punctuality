@@ -1,0 +1,48 @@
+.singin-status .singin-status-value {
+	user-select: text;
+}
+
+.singin-student-i {
+    margin-bottom: 24px;
+}
+.singin-student-i .mdui-card-content {
+    padding-bottom: 0;
+}
+.singin-student-name {
+    font-size: 1.4em;
+}
+.singin-student-status {
+    opacity: .6;
+    padding-top: 4px;
+}
+.singin-student-i {
+    transition: .3s background-color;
+}
+.singin-student-i[data-singin-state=mark-card] {
+    background-color: #BBDEFB;
+}
+.singin-student-i[data-singin-state=mark-face] {
+    background-color: #E1BEE7;
+}
+.singin-student-i[data-singin-state=revoke] {
+    background-color: #E0E0E0;
+}
+.singin-student-i[data-singin-state=card],
+.singin-student-i[data-singin-state=face] {
+    background-color: #D8F5D9;
+}
+.singin-student-i[data-singin-state=leave] {
+    background-color: #FFE082;
+}
+.singin-student-icon-btn {
+    background: transparent !important;
+}
+.singin-student-icon {
+    opacity: .6;
+}
+.singin-student-i[data-singin-state=exclude] .singin-student-name,
+.singin-student-i[data-singin-state=exclude] .singin-student-status,
+.singin-student-i[data-singin-state=exclude] .mdui-card-actions,
+.singin-student-i[data-singin-state=exclude] .singin-student-icon {
+    opacity: .4;
+}

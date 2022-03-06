@@ -1,0 +1,24 @@
+<?php if(!defined('IN_SYSTEM')) exit;//Silence is golden ?><?php
+?><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link id="page-icon" rel="shortcut icon" href="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>加载中 - <?php echo htmlspecial(APP_NAME) ?></title>
+	<?php
+		load_css('mdui/css/mdui');
+		load_css('css/common');
+		load_css('font/skf/part-1');
+	?>
+	<script>
+		var G = <?php echo data_json_encode([
+			'basic_url' => BASIC_URL,
+			'version' => VERSION,
+			'app_name' => APP_NAME,
+			'app_prefix' => APP_PREFIX,
+			'app_info' => app_get_all()
+		]) ?>;
+	</script>
+</head>

@@ -1,0 +1,8 @@
+{
+	dest: 'home/home',
+	children: {
+		'api': {
+			target: 'api.json5'
+		}
+	}
+}

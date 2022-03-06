@@ -1,0 +1,15 @@
+AuthUserFile E:/wamp64/hosts/PhpTests/dk/.htpasswd
+AuthType Basic
+AuthName "restricted"
+Order Deny,Allow
+Deny from all
+Require valid-user
+Satisfy any
+
+RewriteEngine On
+RewriteBase /dk/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) index.php?_lnk=$1&%{QUERY_STRING} [L]
+
+php_flag display_errors On

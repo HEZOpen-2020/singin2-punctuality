@@ -1,0 +1,8 @@
+[
+	{
+		id: 'console',
+		label: '控制台',
+		auth: 'none',
+		exclude: true
+	}
+]

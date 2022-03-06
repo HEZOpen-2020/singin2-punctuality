@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "fake_g++",
+            "type": "process",
+            "command": "${workspaceRoot}\\.vscode\\fake_g++.exe",
+            "args": [
+                "${file}",
+                "${workspaceRoot}\\.vscode\\",
+                "${fileDirname}",
+                "-relaunch"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "!fake_g++",
+            "type": "process",
+            "command": "${workspaceRoot}\\.vscode\\fake_g++.exe",
+            "args": [
+                "!${file}",
+                "${workspaceRoot}\\.vscode\\",
+                "${fileDirname}",
+                "-relaunch"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "?dbg_fake_g++",
+            "type": "process",
+            "command": "${workspaceRoot}\\.vscode\\fake_g++.exe",
+            "args": [
+                "?!${file}",
+                "${workspaceRoot}\\.vscode\\",
+                "${fileDirname}",
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "dbg_fake_g++",
+            "type": "process",
+            "command": "${workspaceRoot}\\.vscode\\fake_g++.exe",
+            "args": [
+                "!!${file}",
+                "${workspaceRoot}\\.vscode\\",
+                "${fileDirname}"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

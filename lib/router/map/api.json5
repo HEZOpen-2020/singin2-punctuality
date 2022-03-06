@@ -1,0 +1,53 @@
+{
+	dest: 'api/meta',
+	children: {
+		'phpinfo': {
+			dest: 'api/phpinfo'
+		},
+		'system': {
+			children: {
+				'status': {
+					dest: 'api/status'
+				},
+				'terminal': {
+					children: {
+						'start': {
+							dest: 'api/terminal_start'
+						},
+						'stop': {
+							dest: 'api/terminal_stop'
+						},
+						'restart': {
+							dest: 'api/terminal_restart'
+						}
+					}
+				},
+				'reboot': {
+				    dest: 'api/reboot'
+				},
+				'log': {
+					dest: 'api/log'
+				}
+			}
+		},
+		'classroom': {
+		    children: {
+		        'lessons': {
+		            dest: 'api/classroom/lessons'
+		        },
+		        'singing-lesson': {
+		            dest: 'api/classroom/singing-lesson'
+		        },
+		        'singing-students': {
+		            dest: 'api/classroom/singing-students'
+		        },
+				'submit-marking': {
+					dest: 'api/classroom/submit-marking'
+				}
+		    }
+		},
+		'dbtest': {
+			dest: 'api/dbtest'
+		}
+	}
+}

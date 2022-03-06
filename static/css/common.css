@@ -1,0 +1,13 @@
+body {
+	user-select: none;
+}
+.singin-round {
+	border-radius: 8px;
+}
+hr {
+	border: none;
+	border-bottom: 1px solid #0000001F;
+}
+.mdui-btn-icon i {
+	font-size: 22px;
+}

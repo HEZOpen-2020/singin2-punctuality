@@ -1,0 +1,55 @@
+.singin-appbar.mdui-color-theme-600,
+.singin-appbar.mdui-color-theme-500,
+.singin-appbar.mdui-color-theme-400 {
+	color: #FFF !important;
+}
+.singin-appbar-delimiter {
+	margin: 0;
+	font-weight: 900;
+	opacity: 0.5;
+	font-size: 1.4em;
+}
+
+.singin-drawer .mdui-list-item-active {
+	font-weight: 400;
+}
+.singin-drawer .mdui-list-item {
+	border-radius: 0 24px 24px 0;
+}
+
+.singin-top-ops {
+	padding-left: 24px;
+	padding-right: 24px;
+	padding-top: 0;
+	padding-bottom: 16px;
+	border-radius: 8px;
+	margin-top: 14px;
+	position: relative;
+	background-color: #FFF;
+	transition: top .25s;
+}
+
+.mdui-container:not(.singin-page-fluid) {
+	max-width: 960px;
+	font-size: 16px;
+}
+.singin-page-container {
+	display: none;
+	opacity: 0;
+	transition: .5s opacity;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+
+.mdui-collapse-item {
+	margin-right: -12px;
+	margin-left: -12px;
+}
+.mdui-collapse-item-body {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.mdui-fab.mdui-fab-fixed {
+	z-index: 1;
+}

@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "D:/MinGW/include",
+                "D:/MinGW/x86_64-w64-mingw32/include",
+                "D:/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                "D:/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+                "D:/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+                "${workspaceRoot}/.vscode/libs",
+                "${workspaceRoot}/.vscode/libs/testlib-0.9.12",
+                "${workspaceRoot}/.vscode/libs/lemon_testlib"
+            ],
+            "defines": [
+                "OFFLINE_JUDGE",
+                "DEBUG"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "browse": {
+                "path": [
+                    "D:/MinGW/include",
+                    "D:/MinGW/x86_64-w64-mingw32/include",
+                    "D:/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                    "D:/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+                    "D:/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+                    "${workspaceRoot}/.vscode/libs",
+                    "${workspaceRoot}/.vscode/libs/testlib-0.9.12",
+                    "${workspaceRoot}/.vscode/libs/lemon_testlib"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "compilerPath": "\"D:/MinGW/bin/g++.exe\"",
+            "cStandard": "c14",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
