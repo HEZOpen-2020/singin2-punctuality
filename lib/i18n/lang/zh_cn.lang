@@ -6,6 +6,7 @@ ui.none = 无
 ui.loading = 加载中
 ui.yes = 是
 ui.no = 否
+ui.abort = 中止
 
 # Navigation
 app.console = 控制台

@@ -100,7 +100,8 @@ function getSupportedLanguage() {
 
 // 获取浏览器语言
 function getBrowserLanguage() {
-	$ret = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+// 	$ret = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+    $ret = 'en_us';
 	if(isset($_COOKIE[APP_PREFIX.'-user-language'])) {
 		$ret = $_COOKIE[APP_PREFIX.'-user-language'];
 	}

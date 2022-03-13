@@ -41,7 +41,9 @@ $(() => {
         }
         if(state == 'face' || state == 'card') {
             var dk_time = new Date(obj.dk_time * 1000);
-            return (obj.dk_method == 'face' ? LNG('cls.state.face') : LNG('cls.state.card')) + ' · ' + /*date_format_date(dk_time) + ' ' +*/ date_format_seconds(dk_time);
+            var time_desc = date_format_seconds(dk_time);
+            time_desc = '**:*' + time_desc.substr(4);
+            return (obj.dk_method == 'face' ? LNG('cls.state.face') : LNG('cls.state.card')) + ' · ' + time_desc;
         }
         if(state == 'exclude') {
             return LNG('cls.state.exclude');

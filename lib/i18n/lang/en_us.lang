@@ -6,6 +6,7 @@ ui.none = None
 ui.loading = Loading
 ui.yes = Yes
 ui.no = No
+ui.abort = Abort
 
 # Navigation
 app.console = Console

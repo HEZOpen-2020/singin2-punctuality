@@ -87,7 +87,7 @@
 		<?php LNGe('cls.submit.dontclose') ?>
 	</div>
 	<div class="mdui-dialog-actions">
-		<button class="mdui-btn mdui-ripple singin-classroom-send-break">中止</button>
+		<button class="mdui-btn mdui-ripple singin-classroom-send-break"><?php LNGe('ui.abort') ?></button>
 	</div>
 </div>
 
@@ -148,7 +148,7 @@
 			</p>
 			<p><?php LNGe('about.version') ?><span class="singin-about-version"></span></p>
 			<p><?php LNGe('about.author') ?></p>
-			<p><a href="https://github.com/yezhiyi9670/singin2-punctuality" target="_blank">在 Github 上查看</a></p>
+			<p><a href="https://github.com/Yeriuth/singin2-punctuality" target="_blank">在 Github 上查看</a></p>
 			<p>
 				<button class="mdui-btn mdui-btn-raised mdui-color-theme-accent" onclick="switchLanguage('zh_cn')">
 					中文模式

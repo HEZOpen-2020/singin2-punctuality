@@ -1,5 +1,15 @@
 Singin! punctuality
 =====
+  
+![][version] ![][license] ![][build_date]  
+![][modloader]![][modloader_1]
+
+[version]: https://img.shields.io/badge/Version-1.1.2-green.svg?style=flat-square
+[build_date]: https://img.shields.io/badge/Build%20Date-20220313-darkblue.svg?style=flat-square
+[modloader]: https://img.shields.io/badge/Base%20Technology-Apache/PHP-orange.svg?style=flat-square
+[modloader_1]: https://img.shields.io/badge/C++-red.svg?style=flat-square
+[side]: https://img.shields.io/badge/Side-client-yellow.svg?style=flat-square
+[license]: https://img.shields.io/badge/License-MIT%20License-blue.svg?style=flat-square
 
 ## What is this project about?
 
@@ -7,7 +17,7 @@ It's a highly specific patcher for a game. You will certainly know what we're ta
 
 ## Why is the project name spelled wrong?
 
-Because the project is the continuation of another project, whose name is also spelled wrong, since the beginning of the development.
+Because the project is the continuation of another project, whose name is also spelled wrong since the beginning of the development.
 
 ## Are my devices qualified?
 
@@ -51,7 +61,7 @@ You may find that `dbquery.exe` is already in the directory. It is a precompiled
 2. Download the `DesktopLaunchDaemon.zip`.
 3. Put all your compiled code, along with the two files above and the installer of a code editor (you may need this) into a removable medium.
 4. Plug your medium into the server (you may need some techniques to do this).
-5. Unzip `DesktopLaunchDaemon.zip` to `C:\SystemComponent\DesktopLaunchDaemon\`, and set `DesktopLaunchDaemon.exe` to start on boot.
+5. Unzip `DesktopLaunchDaemon.zip` to `C:\SystemComponent\DesktopLaunchDaemon\`, and set `DesktopLaunchDaemon.exe` to start on boot.  
    For this, you cannot uses the task scheduler. You could put the shortcut of `DesktopLaunchDaemon.exe` into `Startup` folder.
 6. Install Apache environment.
 7. Configure httpd to start on boot.
@@ -62,14 +72,14 @@ You may find that `dbquery.exe` is already in the directory. It is a precompiled
 
 ### Server Installation
 
-1. Open `.htaccess` using a proper editor and set `RewriteBase`.
+1. Open `.htaccess` using a proper editor and set `RewriteBase`.  
    For example, if the web URL is `http://10.241.1.9:88/app/singin/`, you should write `RewriteBase /app/singin/`.
 2. In `.htaccess`, set a proper `.htpasswd` file, or remove the first section if you don't need password protection (this is not recommended).
 3. Find `localData.db` on the server and crack password (cracking the password does not need any tool, though).
-4. Open `internal_config/config.php`, set the `BASIC_URL` constant and other items properly.
-   `db_path` `db_password` - Information of `localData.db`.
-   `proc_name` - The process name of the GS.Terminal.
-   `proc_path` - The program which starts GS.Terminal, most likely GS.Terminal itself.
+4. Open `internal_config/config.php`, set the `BASIC_URL` constant and other items properly.  
+   `db_path` `db_password` - Information of `localData.db`.  
+   `proc_name` - The process name of the GS.Terminal.  
+   `proc_path` - The program which starts GS.Terminal, most likely GS.Terminal itself.  
    `classroom_allow_revoke` - Allow revoking singin. We don't recommend turning it on under production environment as this can be easily abused.
 5. Check the IP address of the server, and access the web URL using a browser on the client to see if there's any errors.
 
