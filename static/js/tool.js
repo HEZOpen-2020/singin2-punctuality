@@ -105,7 +105,7 @@ function fetch_json(url) {
 function post_json(url, data) {
 	return new Promise((resolve, reject) => {
 		$.ajax({
-			type: 'POST',
+			method: 'POST',
 			data: data,
 			dataType: 'json',
 			url: url,

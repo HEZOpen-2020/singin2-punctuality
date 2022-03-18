@@ -148,7 +148,7 @@
 			</p>
 			<p><?php LNGe('about.version') ?><span class="singin-about-version"></span></p>
 			<p><?php LNGe('about.author') ?></p>
-			<p><a href="https://github.com/Yeriuth/singin2-punctuality" target="_blank">在 Github 上查看</a></p>
+			<p><a href="https://github.com/HEZOpen-2020/singin2-punctuality" target="_blank">在 Github 上查看</a></p>
 			<p>
 				<button class="mdui-btn mdui-btn-raised mdui-color-theme-accent" onclick="switchLanguage('zh_cn')">
 					中文模式

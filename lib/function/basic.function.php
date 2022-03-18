@@ -1,6 +1,21 @@
 <?php if(!defined('IN_SYSTEM')) exit;//Silence is golden ?><?php
 
 /**
+ * 目录列表
+ */
+function dir_list($dir) {
+    $arr1 = scandir($dir);
+    $arr = [];
+    foreach($arr1 as $item) {
+        if($item == '.' || $item == '..') {
+            continue;
+        }
+        $arr[] = $item;
+    }
+    return $arr;
+}
+
+/**
  * 键映射
  */
 function csv_map_key(&$data, $headers) {

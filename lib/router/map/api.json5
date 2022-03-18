@@ -46,6 +46,23 @@
 				}
 		    }
 		},
+		'hz2zrun': {
+		    children: {
+		        'student': {
+		            children: {
+		                'sync': {
+		                    dest: 'api/hz2zrun/student-sync'
+		                },
+		                'classes': {
+		                    dest: 'api/hz2zrun/classes'
+		                },
+		                'students': {
+		                    dest: 'api/hz2zrun/students'
+		                }
+		            }   
+		        }
+		    }
+		},
 		'dbtest': {
 			dest: 'api/dbtest'
 		}

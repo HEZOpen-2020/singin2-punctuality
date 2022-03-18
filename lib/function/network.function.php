@@ -57,7 +57,7 @@ function post_url_encode($data) {
 function post_submit($url, $opt = [], $data = '', $encode_url = false) {
 	$ch = curl_init();
 
-	$ua = 'com.xh.zhitongyunstu/v3.59.11.20211026.2S (SM-P355C; android; 9; ABAABAABAABA)';
+	$ua = 'com.android/v7.1.2-20160301142521 (N1-286A; android; 7; 0123456789ABCDEF)';
 	if(isset($opt['User-Agent'])) {
 		$ua = $opt['User-Agent'];
 	}
