@@ -1,11 +1,11 @@
 Singin! punctuality
 =====
   
-![][version] ![][license] ![][build_date]  
+![][version] ![][license] ![][build_date] 
 ![][modloader]![][modloader_1]
 
-[version]: https://img.shields.io/badge/Version-1.1.2-green.svg?style=flat-square
-[build_date]: https://img.shields.io/badge/Build%20Date-20220313-darkblue.svg?style=flat-square
+[version]: https://img.shields.io/badge/Version-1.1.4-green.svg?style=flat-square
+[build_date]: https://img.shields.io/badge/Build%20Date-20220409-darkblue.svg?style=flat-square
 [modloader]: https://img.shields.io/badge/Base%20Technology-Apache/PHP-orange.svg?style=flat-square
 [modloader_1]: https://img.shields.io/badge/C++-red.svg?style=flat-square
 [side]: https://img.shields.io/badge/Side-client-yellow.svg?style=flat-square
