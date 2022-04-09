@@ -12,6 +12,7 @@ ui.abort = 中止
 app.console = 控制台
 nav.cate.functions = 功能
 nav.item.classroom = 教室考勤
+nav.item.tradition = 传统艺能
 nav.item.run = 晨跑考勤
 nav.cate.system = 系统
 nav.item.status = 系统状态
@@ -20,11 +21,16 @@ nav.cate.about = 关于
 nav.item.about = 关于此项目
 
 # Classroom
+cls.loadinglesson = 正在获取课程信息
 cls.nolesson = 没有正在考勤的课程
 cls.nolesson.1 = 请在考勤开始后检查此页面。
 cls.nolesson.2 = 若检测存在问题，请检查服务端配置和时区设置。
 cls.currlesson = 当前课程
 cls.nostudent = 未发现任何考勤人员
+cls.filter = 筛选：
+cls.filter.both = 全部
+cls.filter.no = 未签到
+cls.filter.yes = 已签到
 cls.submit.title = 正在提交更改
 cls.submit.progress = "[教室考勤] 正在提交更改... "
 cls.submit.currname = 当前姓名：
@@ -53,7 +59,19 @@ cls.alert.submit.3 = 确定提交所有更改？<br /><ul>${0}</ul>请注意已�
 cls.alert.submit.title = 提交更改
 cls.toast.submit.finish = 更改提交完成，${0} 个成功，${1} 个失败。
 cls.alert.restart.title = 提交完成
-cls.alert.restart.1 = 更改提交完成。<br />为确保更改生效，建议立即重启终端程序。<br />是否立即重启？
+cls.alert.restart.1 = 更改提交完成，${0} 个成功，${1} 个失败。<br />为确保更改生效，建议立即重启终端程序。<br />是否立即重启？
+
+# Tradition
+tradition.next = 接下来...
+tradition.remain.years = 剩余 ${0} 年
+tradition.now = 就是现在
+tradition.nexts.name = 姓名
+tradition.nexts.date = 日期
+tradition.loading = 正在读取数据
+tradition.loading.class = 正在读取班级信息，请稍候...
+tradition.fail = 获取信息失败
+tradition.fail.tips = 无法获取班级数据。<br />请确保已同步人员信息，并重试。
+tradition.reload = 重试
 
 # Status
 status.title = 系统状态

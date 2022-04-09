@@ -25,7 +25,7 @@ function _C($key) {
 			'classroom_allow_revoke' => false,
 			
 			// 晨跑打卡机信息
-			'hz2zrun_host' => 'http://192.168.1.180:8083',
+			'hz2zrun_host' => 'http://192.168.1.180:8083', // 必须有协议标记，末尾不要有斜杠。
 			'hz2zrun_name' => 'runhand20190816170251',
 			'hz2zrun_type' => 0, // 0=进, 1=出, 2=未识别
 		][$key];

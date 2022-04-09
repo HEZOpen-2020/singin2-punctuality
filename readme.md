@@ -76,11 +76,12 @@ You may find that `dbquery.exe` is already in the directory. It is a precompiled
    For example, if the web URL is `http://10.241.1.9:88/app/singin/`, you should write `RewriteBase /app/singin/`.
 2. In `.htaccess`, set a proper `.htpasswd` file, or remove the first section if you don't need password protection (this is not recommended).
 3. Find `localData.db` on the server and crack password (cracking the password does not need any tool, though).
-4. Open `internal_config/config.php`, set the `BASIC_URL` constant and other items properly.  
+4. Rename `internal_config/config.sample.php` to `config.php`, set the `BASIC_URL` constant and other items properly.  
    `db_path` `db_password` - Information of `localData.db`.  
    `proc_name` - The process name of the GS.Terminal.  
    `proc_path` - The program which starts GS.Terminal, most likely GS.Terminal itself.  
-   `classroom_allow_revoke` - Allow revoking singin. We don't recommend turning it on under production environment as this can be easily abused.
+   `classroom_allow_revoke` - Allow revoking singin. We don't recommend turning it on under production environment as this can be easily abused.  
+   Check `lib/config_default.php` for more available options.
 5. Check the IP address of the server, and access the web URL using a browser on the client to see if there's any errors.
 
 ## How to use?

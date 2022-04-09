@@ -9,4 +9,4 @@ _tool
 data
 data/log
 data/i18n
-
+internal_config/config.php

@@ -117,6 +117,7 @@ $(() => {
         }
 
         var has_student = false;
+        var filter_state = $('.singin-classroom-filter').val();
         for(let idx in G.classroom.singing_students) {
             if(idx * 1 != idx) continue;
 
@@ -124,6 +125,14 @@ $(() => {
             let dk_state = determine_state(student);
             let dk_message = state_message(student);
             let stu_card = null;
+            let hidden = false;
+
+            if(filter_state == 'no' && ['card', 'face'].indexOf(dk_state) != -1) {
+                hidden = true;
+            }
+            if(filter_state == 'yes' && ['card', 'face'].indexOf(dk_state) == -1) {
+                hidden = true;
+            }
             
             if(!consistency) {
                 stu_card = $(`
@@ -156,6 +165,7 @@ $(() => {
                 $action_btn.disabled(false);
             }
             $(`[data-singin-classroom-oid="${student.oid}"] .singin-student-icon`).text(state_icon(student));
+            $(`[data-singin-classroom-oid="${student.oid}"]`)[hidden ? 'hide' : 'show']();
 
             if(!consistency) {
                 $(`[data-singin-classroom-oid="${student.oid}"] .singin-student-action`).on('click', () => {
@@ -196,9 +206,12 @@ $(() => {
             has_student = true;
         }
         if(!has_student) {
-            $('.singin-student-list').html('<div class="mdui-col-xs-12">未发现任何考勤人员</div>');
+            $('.singin-student-list').html('<div class="mdui-col-xs-12">' + LNG('cls.nostudent') + '</div>');
         }
     };
+    $('.singin-classroom-filter').on('change', function() {
+        actuate_all();
+    });
     $('.singin-classroom-action-refresh').on('click', async function() {
         $(this).disabled(true);
         var state = await refresh();
@@ -281,6 +294,7 @@ $(() => {
                 if(marked_state.indexOf(state) != -1) {
                     i += 1;
                     $('.singin-classroom-send-process-x').text(i);
+                    $('.singin-classroom-send-process-d').css('width', (i / (dk_count + revoke_count) * 100) + '%');
                     $('.singin-classroom-send-name').text(student.name);
                     var data = await post_json(G.basic_url + 'api/classroom/submit-marking', {
                         lesson: G.system_status.singing_lesson_id,
@@ -307,7 +321,7 @@ $(() => {
             await refresh();
 
             if(success_count > 0) {
-                if(await mdui.confirm_async(LNG('cls.alert.restart.1'), LNG('cls.alert.restart.title'))) {
+                if(await mdui.confirm_async(LNG('cls.alert.restart.1', success_count, failure_count), LNG('cls.alert.restart.title'))) {
                     var data = await fetch_json(G.basic_url + 'api/system/terminal/restart');
                     if(!data) {
                         mdui.snackbar(LNG('status.toast.except'), {timeout: 2000});
@@ -339,13 +353,9 @@ $(() => {
             if(!data || !data.success) {
                 return false;
             }
-            $('.singin-classroom-empty').hide();
-            $('.singin-classroom-active').show();
             G.classroom.singing_lesson = data.data;
         }
         if(last_singing_lesson != null && singing_lesson == null) {
-            $('.singin-classroom-empty').show();
-            $('.singin-classroom-active').hide();
             G.classroom.singing_students = [];
             actuate_all();
             G.classroom.singing_students = null;
@@ -355,8 +365,15 @@ $(() => {
             if(!data || !data.success) {
                 return false;
             }
+            $('.singin-classroom-loading').hide();
+            $('.singin-classroom-empty').hide();
+            $('.singin-classroom-active').show();
             G.classroom.singing_students = data.data;
             actuate_all();
+        } else {
+            $('.singin-classroom-loading').hide();
+            $('.singin-classroom-empty').show();
+            $('.singin-classroom-active').hide();
         }
         last_singing_lesson = singing_lesson;
 

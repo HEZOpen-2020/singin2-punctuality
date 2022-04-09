@@ -46,3 +46,18 @@
 .singin-student-i[data-singin-state=exclude] .singin-student-icon {
     opacity: .4;
 }
+
+p.singin-tradition-date {
+    font-weight: 700;
+    font-size: 5em;
+    text-align: center;
+    line-height: 100%;
+    margin-bottom: .5em;
+}
+p.singin-tradition-attendant {
+    font-weight: 500;
+    font-size: 4em;
+    text-align: center;
+    line-height: 100%;
+    margin-bottom: .5em;
+}

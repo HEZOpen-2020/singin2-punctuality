@@ -14,7 +14,13 @@
 		'id' => 'classroom-dk',
 		'icon' => 'done',
 		'label' => LNG('nav.item.classroom'),
-		'selected' => true
+		'selected' => true,
+	],
+	[
+		'id' => 'tradition',
+		'icon' => 'date_range',
+		'label' => LNG('nav.item.tradition'),
+		// 'selected' => true
 	],
 	// [
 	// 	'id' => 'run-dk',
@@ -45,13 +51,29 @@
 ]) ?>
 
 <div class="mdui-container singin-page-container singin-page-fluid" data-singin-page="classroom-dk">
-    <div class="singin-classroom-empty mdui-typo">
+	<div class="singin-classroom-loading mdui-typo">
+		<h2><?php LNGe('cls.loadinglesson') ?></h2>
+		<p>
+			<div class="mdui-progress">
+				<div class="mdui-progress-indeterminate"></div>
+			</div>
+		</p>
+	</div>
+    <div class="singin-classroom-empty mdui-typo" style="display: none;">
         <h2><?php LNGe('cls.nolesson') ?></h2>
 		<p><?php LNGe('cls.nolesson.1') ?></p>
 		<p><?php LNGe('cls.nolesson.2') ?></p>
     </div>
     <div class="singin-classroom-active mdui-typo" style="display: none;">
         <h2 class="mdui-m-b-3"><?php LNGe('cls.currlesson') ?>（<span class="singin-lesson-name">undefined</span>）</h2>
+		<p>
+			<?php LNGe('cls.filter') ?>
+			<select class="mdui-select singin-classroom-filter" mdui-select>
+				<option value="both"><?php LNGe('cls.filter.both') ?></option>
+				<option value="no"><?php LNGe('cls.filter.no') ?></option>
+				<option value="yes"><?php LNGe('cls.filter.yes') ?></option>
+			</select>
+		</p>
         <div style="margin-bottom: 160px;" class="mdui-row singin-student-list">
             <div class="mdui-col-xs-12"><?php LNGe('cls.nostudent') ?></div>
         </div>
@@ -84,10 +106,57 @@
 	<div class="mdui-dialog-content">
 		<?php LNGe('cls.submit.progress') ?><span class="singin-classroom-send-process-x">2</span>/<span class="singin-classroom-send-process-y">100</span><br />
 		<?php LNGe('cls.submit.currname') ?><span class="singin-classroom-send-name"></span><br />
+		<p>
+			<div class="mdui-progress">
+				<div class="mdui-progress-determinate singin-classroom-send-process-d" style="width: 0%;"></div>
+			</div>
+		</p>
 		<?php LNGe('cls.submit.dontclose') ?>
 	</div>
 	<div class="mdui-dialog-actions">
 		<button class="mdui-btn mdui-ripple singin-classroom-send-break"><?php LNGe('ui.abort') ?></button>
+	</div>
+</div>
+
+<div class="mdui-container singin-page-container" data-singin-page="tradition">
+	<div class="mdui-row">
+		<div class="mdui-col-xs-12 mdui-typo">
+			<div class="singin-tradition-loading">
+				<h2><?php LNGe('tradition.loading') ?></h2>
+				<p>
+					<div class="mdui-progress">
+						<div class="mdui-progress-indeterminate"></div>
+					</div>
+				</p>
+			</div>
+			<div class="singin-tradition-fail">
+				<h2><?php LNGe('tradition.fail') ?></h2>
+				<p>
+					<?php echo LNG('tradition.fail.tips') ?>
+				</p>
+				<p>
+					<button class="mdui-btn mdui-btn-raised mdui-color-theme-accent singin-tradition-reload"><?php LNGe('tradition.reload') ?></button>
+				</p>
+			</div>
+			<div class="singin-tradition-content" style="display: none;">
+				<p style="text-align:right">
+					<select class="mdui-select singin-tradition-class"></select>
+				</p>
+				<div class="singin-tradition-data" style="display:none;">
+					<p class="singin-tradition-date"></p>
+					<div class="singin-tradition-attendants"></div>
+					<h3 style="text-align:center"><?php LNGe('tradition.remain.years', 'NaN') ?></h3>
+					<hr class="mdui-m-t-5" />
+					<h3 class="mdui-m-t-3"><?php LNGe('tradition.next') ?></h3>
+					<table class="mdui-table singin-tradition-nexts">
+						<tr>
+							<th><?php LNGe('tradition.nexts.name') ?></th>
+							<th><?php LNGe('tradition.nexts.date') ?></th>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -171,6 +240,7 @@
 	load_js('js/app_common');
 	load_js('js/app_console');
 	load_js('js/app_console_classroom');
+	load_js('js/app_console_tradition');
 	show_app_title('console');
 	show_theme_color('blue-grey', 'blue');
 ?>
