@@ -1,7 +1,7 @@
 Singin! punctuality
 =====
   
-![][version] ![][license] ![][build_date] 
+![][version] ![][license] ![][build_date]  
 ![][modloader]![][modloader_1]
 
 [version]: https://img.shields.io/badge/Version-1.1.4-green.svg?style=flat-square
