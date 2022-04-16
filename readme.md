@@ -4,8 +4,8 @@ Singin! punctuality
 ![][version] ![][license] ![][build_date]  
 ![][modloader]![][modloader_1]
 
-[version]: https://img.shields.io/badge/Version-1.1.4-green.svg?style=flat-square
-[build_date]: https://img.shields.io/badge/Build%20Date-20220409-darkblue.svg?style=flat-square
+[version]: https://img.shields.io/badge/Version-1.1.5-green.svg?style=flat-square
+[build_date]: https://img.shields.io/badge/Build%20Date-20220417-darkblue.svg?style=flat-square
 [modloader]: https://img.shields.io/badge/Base%20Technology-Apache/PHP-orange.svg?style=flat-square
 [modloader_1]: https://img.shields.io/badge/C++-red.svg?style=flat-square
 [side]: https://img.shields.io/badge/Side-client-yellow.svg?style=flat-square
@@ -77,10 +77,6 @@ You may find that `dbquery.exe` is already in the directory. It is a precompiled
 2. In `.htaccess`, set a proper `.htpasswd` file, or remove the first section if you don't need password protection (this is not recommended).
 3. Find `localData.db` on the server and crack password (cracking the password does not need any tool, though).
 4. Rename `internal_config/config.sample.php` to `config.php`, set the `BASIC_URL` constant and other items properly.  
-   `db_path` `db_password` - Information of `localData.db`.  
-   `proc_name` - The process name of the GS.Terminal.  
-   `proc_path` - The program which starts GS.Terminal, most likely GS.Terminal itself.  
-   `classroom_allow_revoke` - Allow revoking singin. We don't recommend turning it on under production environment as this can be easily abused.  
    Check `lib/config_default.php` for more available options.
 5. Check the IP address of the server, and access the web URL using a browser on the client to see if there's any errors.
 
@@ -105,5 +101,17 @@ Click the button under the name to change the state of a participant. If the ico
 After clicking, hover on the floating button and click the send icon. Changes will be submitted automatically. After that, you will be reminded to restart the GS.Terminal.
 
 If something funny happens, check the output of the API using the browser Network panel.
+
+### Traditional Ability
+
+This function is used for notifying birthdays, so we can have Arubas more precisely.
+
+You have to set `hz2zrun_host` properly in order to use this. If you don't know how to set, refer to a portable sign-in machine in the school.
+
+Before using, send a request `api/hz2zrun/student/sync` to get data.
+
+Check `data/hz2zrun/student/_classes.json` and set other configurations.
+
+Then you can see birthday info on the page.
 
 *Enjoy, and Good Luck : )*

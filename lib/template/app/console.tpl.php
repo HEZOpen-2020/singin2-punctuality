@@ -14,13 +14,13 @@
 		'id' => 'classroom-dk',
 		'icon' => 'done',
 		'label' => LNG('nav.item.classroom'),
-		'selected' => true,
+		// 'selected' => true,
 	],
 	[
 		'id' => 'tradition',
 		'icon' => 'date_range',
 		'label' => LNG('nav.item.tradition'),
-		// 'selected' => true
+		'selected' => true
 	],
 	// [
 	// 	'id' => 'run-dk',
@@ -140,20 +140,34 @@
 			</div>
 			<div class="singin-tradition-content" style="display: none;">
 				<p style="text-align:right">
-					<select class="mdui-select singin-tradition-class"></select>
+					<span style="text-align:left">
+						<select class="mdui-select singin-tradition-class"></select>
+					</span>
 				</p>
 				<div class="singin-tradition-data" style="display:none;">
 					<p class="singin-tradition-date"></p>
 					<div class="singin-tradition-attendants"></div>
-					<h3 style="text-align:center"><?php LNGe('tradition.remain.years', 'NaN') ?></h3>
-					<hr class="mdui-m-t-5" />
-					<h3 class="mdui-m-t-3"><?php LNGe('tradition.next') ?></h3>
-					<table class="mdui-table singin-tradition-nexts">
-						<tr>
-							<th><?php LNGe('tradition.nexts.name') ?></th>
-							<th><?php LNGe('tradition.nexts.date') ?></th>
-						</tr>
-					</table>
+					<h3 style="text-align:center" class="singin-tradition-countdown"><?php LNGe('tradition.remain.years', 'NaN') ?></h3>
+					<div class="singin-tradition-next-sec">
+						<hr class="mdui-m-t-5" />
+						<h3 class="mdui-m-t-3"><?php LNGe('tradition.next') ?></h3>
+						<table class="mdui-table singin-tradition-nexts">
+							<tr>
+								<th><?php LNGe('tradition.nexts.name') ?></th>
+								<th><?php LNGe('tradition.nexts.date') ?></th>
+							</tr>
+						</table>
+						<p style="text-align: right;">
+							<button class="mdui-btn mdui-ripple singin-tradition-show-more">
+								<?php LNGe('tradition.show_more') ?>
+							</button>
+						</p>
+					</div>
+				</div>
+				<div class="singin-tradition-data-loading">
+					<div class="mdui-progress">
+						<div class="mdui-progress-indeterminate"></div>
+					</div>
 				</div>
 			</div>
 		</div>

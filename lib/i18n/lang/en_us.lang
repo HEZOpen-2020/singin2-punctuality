@@ -62,16 +62,18 @@ cls.alert.restart.title = Changes Submitted
 cls.alert.restart.1 = Changes submitted. ${0} success, ${1} failure.<br />To make sure that the changes make effect, we suggest restarting the terminal.<br />Restart now?
 
 # Tradition
-tradition.next = Next...
-tradition.remain.years = ${0} Year Remaining
+tradition.next = Then...
+tradition.remain.years = ${0} Years Remaining
 tradition.now = Right Now
 tradition.nexts.name = Name
 tradition.nexts.date = Date
 tradition.loading = Reading Data
 tradition.loading.class = Reading classes data, please wait...
 tradition.fail = Data Failed to Load
-tradition.fail.tips = Failed to load classes data.<br />Make sure you have synchronized data and retry.
+tradition.fail.tips = Failed to load classes data.<br />Make sure you have synchronized data and set correct default class ID, then retry.
 tradition.reload = Retry
+tradition.show_more = Show More
+tradition.show_less = Show Less
 
 # Status
 status.title = System Status

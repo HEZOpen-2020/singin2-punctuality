@@ -14,12 +14,20 @@
 		load_js_e(BASIC_URL . 'i18n?v=' . VERSION);
 	?>
 	<script>
+		<?php
+			$public_values = [];
+			$public_keys = _C_public_values();
+			foreach($public_keys as $key) {
+				$public_values[$key] = _C($key);
+			}
+		?>
 		var G = <?php echo data_json_encode([
 			'basic_url' => BASIC_URL,
 			'version' => VERSION,
 			'app_name' => APP_NAME,
 			'app_prefix' => APP_PREFIX,
-			'app_info' => app_get_all()
+			'app_info' => app_get_all(),
+			'public_config' => $public_values
 		]) ?>;
 	</script>
 </head>
