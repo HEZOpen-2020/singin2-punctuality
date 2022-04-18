@@ -91,30 +91,23 @@ $(async () => {
 		$('.singin-tradition-data').show();
 
 		// 解析数据
+		var currDate = new Date();
 		var students = [];
 		for(stu_id in data) {
 			let stu = data[stu_id];
-			stu.BirthDate = stu.BirthDay.substr(4, 8);
-			students.push(stu);
+			if(stu.BirthDay) {
+    			stu.BirthDate = stu.BirthDay.substr(4, 8);
+    			stu.NextBirthDayDate = next_date_occurance(date_from_datestr(stu.BirthDay), currDate);
+    			students.push(stu);
+			}
 		}
 
 		// 排序数值
-		var currDate = new Date();
-		var currDateStr = date_format_str(currDate).substr(4, 4);
 		students.sort((a, b) => {
-			date0 = currDateStr;
-			date1 = a.BirthDate;
-			date2 = b.BirthDate;
-
-			var p1 = (date1 < date0);
-			var p2 = (date2 < date0);
-
-			if(p1 < p2) return -1;
-			if(p1 > p2) return 1;
-			if(date1 < date2) return -1;
-			if(date1 > date2) return 1;
-			if(a.name < b.name) return -1;
-			if(a.name > b.name) return 1;
+			if(a.NextBirthDayDate < b.NextBirthDayDate) return -1;
+			if(a.NextBirthDayDate > b.NextBirthDayDate) return 1;
+			if(a.UserName < b.UserName) return -1;
+			if(a.UserName > b.UserName) return 1;
 			return 0;
 		});
 
@@ -133,10 +126,7 @@ $(async () => {
 		let next_year_str = prepend_str(currDate.getFullYear() + 1, 4, '0');
 		for(let i = 0; i < start_ptr; i++) {
 			let stu = students[i];
-			let target_date = date_from_datestr(now_year_str + stu.BirthDate);
-			if(stu.BirthDate < currDateStr) {
-				target_date = date_from_datestr(next_year_str + stu.BirthDate);
-			}
+			let target_date = stu.NextBirthDayDate;
 			countdown_end = +target_date;
 			start_date_repr = (target_date.getMonth() + 1).toString() + '.' + target_date.getDate();
 			start_names.push(stu.UserName);

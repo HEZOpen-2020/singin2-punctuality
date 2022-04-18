@@ -58,6 +58,27 @@ function date_from_datestr(t) {
 	return new Date(t.substr(0,4) + '/' + t.substr(4,2) + '/' + t.substr(6,2));
 }
 
+function is_leap_year(t) {
+    t = +t;
+    return (t % 4 == 0 && t % 100 != 0) || (t % 400 == 0);
+}
+
+/**
+ * 注意：date1 和 now 为 Date 对象
+ */
+function next_date_occurance(date1, now) {
+    var md1 = date_format_str(date1).substr(4, 4);
+    var md_now = date_format_str(now).substr(4, 4);
+    var init_year = +now.getFullYear();
+    if(md1 < md_now) {
+        init_year += 1;
+    }
+    while(!is_leap_year(init_year) && md1 == '0229') {
+        init_year += 1;
+    }
+    return new Date(init_year + '/' + (date1.getMonth() + 1) + '/' + date1.getDate());
+}
+
 Date.prototype.getSecondsOfDay = function() {
 	var dayStart = +new Date('' + this.getFullYear() + '/' + (this.getMonth() + 1) + '/' + this.getDate());
 	return (+this - dayStart) / 1000;

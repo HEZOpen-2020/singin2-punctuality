@@ -3,7 +3,7 @@
 error_reporting(E_ALL & (~E_NOTICE));
 
 define('IN_SYSTEM', "WMSDFCL\\Singin2\\Punctuality");
-define('VERSION', '1.1.5');
+define('VERSION', '1.1.6');
 
 define('DIR', rtrim(str_replace("\\",'/',__DIR__), '/') . '/');
 define('DATA_PATH', DIR . 'data/');
