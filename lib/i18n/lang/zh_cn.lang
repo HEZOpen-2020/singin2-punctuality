@@ -7,6 +7,7 @@ ui.loading = 加载中
 ui.yes = 是
 ui.no = 否
 ui.abort = 中止
+ui.developing = 正在施工
 
 # Navigation
 app.console = 控制台
@@ -74,6 +75,32 @@ tradition.fail.tips = 无法获取班级数据。<br />请确保已同步人员�
 tradition.reload = 重试
 tradition.show_more = 显示更多
 tradition.show_less = 显示更少
+
+# Hz2zrun
+hz2zrun.title = 晨跑考勤
+hz2zrun.alpha = α-摆烂版
+hz2zrun.click_more = 继续点击打开晨跑考勤。
+hz2zrun.section.sync = 人员同步
+hz2zrun.action.sync = 同步
+hz2zrun.section.record = 考勤记录
+hz2zrun.action.view = 查看
+hz2zrun.action.export = 导出
+hz2zrun.action.upload = 上传
+hz2zrun.view.title = ${0} ${1}
+hz2zrun.upload.title = 上传 ${0} ${1}
+hz2zrun.upload.select = 请选择用于上传的打卡机信息。
+hz2zrun.upload.already = 今日已上传
+hz2zrun.already.title = 今日已上传
+hz2zrun.already.desc = 此打卡机信息今天已上传记录 ${0} ${1}。<br />不建议重复上传，确认继续？
+hz2zrun.wait.desc = 请等待直到上传完成！
+hz2zrun.done.title = 上传完成
+hz2zrun.done.desc = 已使用打卡机信息 ${2} 上传 ${0} ${1}。<br />上传返回数据已写入日志，请检查。
+hz2zrun.error.fail = 上传失败。
+hz2zrun.error.tan90 = 此记录不存在。
+hz2zrun.sync_done.desc = 人员同步完成。
+hz2zrun.sync_fail.desc = 人员同步失败。
+hz2zrun.type.card = 刷卡
+hz2zrun.type.check = 补签
 
 # Status
 status.title = 系统状态

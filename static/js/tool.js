@@ -6,6 +6,19 @@ $.fn.disabled = function(x) {
 	}
 };
 
+/**
+ * 将某奇怪日期自动溢出
+ */
+function _0535_transform(t) {
+    var m = t[0];
+    var d = t[1];
+    if(m == 6 && 2 <= d && d <= 4) {
+        m -= 1;
+        d += 31;
+    }
+    return [m, d];
+}
+
 function prepend_str(str, len, prefix='0') {
 	str = str.toString();
 	while(str.length < len) {
@@ -27,7 +40,8 @@ function date_format(d) {
 }
 
 function date_format_date(d) {
-	return prepend_str('' + (d.getMonth() + 1), 2, '0') + '月' + prepend_str('' + d.getDate(), 2, '0') + '日';
+    var dateMd = _0535_transform([d.getMonth() + 1, d.getDate()]);
+	return prepend_str('' + dateMd[0], 2, '0') + '月' + prepend_str('' + dateMd[1], 2, '0') + '日';
 }
 
 function date_format_fullmonth(d) {

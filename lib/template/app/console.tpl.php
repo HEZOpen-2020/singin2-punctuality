@@ -20,13 +20,15 @@
 		'id' => 'tradition',
 		'icon' => 'date_range',
 		'label' => LNG('nav.item.tradition'),
+		'hidden_target' => 'run-dk',
 		'selected' => true
 	],
-	// [
-	// 	'id' => 'run-dk',
-	// 	'icon' => 'directions_run',
-	// 	'label' => LNG('nav.item.run'),
-	// ],
+	[
+		'id' => 'run-dk',
+		'icon' => 'directions_run',
+		'label' => LNG('nav.item.run'),
+		'hidden' => true
+	],
 	[
 		'group_label' => LNG('nav.cate.system')
 	],
@@ -171,6 +173,14 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div class="mdui-container singin-page-container" data-singin-page="run-dk">
+	<div class="mdui-row">
+		<div class="mdui-col-xs-12 mdui-typo">
+	        <?php LNGe('ui.developing') ?>
+	    </div>
 	</div>
 </div>
 

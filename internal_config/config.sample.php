@@ -21,8 +21,9 @@ function _CU() {
 		// 系统编码
 		'system_locale' => 'GBK',
 
-		// 允许教室打卡撤销
-		'classroom_allow_revoke' => false,
+		// 教室打卡界面选项
+		'classroom_allow_revoke' => false, // 允许教室打卡撤销
+		'classroom_filter_force_consistency' => true, // 状态变更时保持筛选列表不变，防止误操作
 		
 		// 晨跑打卡机信息
 		'hz2zrun_host' => 'http://192.168.1.180:8083', // 必须有协议标记，末尾不要有斜杠。

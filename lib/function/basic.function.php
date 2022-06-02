@@ -64,6 +64,15 @@ function process_exists($name) {
 }
 
 /**
+ * 创建目录
+ */
+function create_dir($path) {
+	if(!file_exists($path)) {
+		mkdir($path, 0777, true);
+	}
+}
+
+/**
  * 创建文件
  */
 function create_file($path) {

@@ -92,6 +92,7 @@ $(() => {
         return 'Singin';
     };
     
+    var filter_state_prev = '';
     var actuate_all = () => {
         $('.singin-lesson-name').text(G.classroom.singing_lesson.name);
 
@@ -118,6 +119,8 @@ $(() => {
 
         var has_student = false;
         var filter_state = $('.singin-classroom-filter').val();
+        var force_consistency = G.public_config.classroom_filter_force_consistency && (filter_state_prev == filter_state);
+        filter_state_prev = filter_state;
         for(let idx in G.classroom.singing_students) {
             if(idx * 1 != idx) continue;
 
@@ -126,7 +129,8 @@ $(() => {
             let dk_message = state_message(student);
             let stu_card = null;
             let hidden = false;
-
+            
+            
             if(filter_state == 'no' && ['card', 'face'].indexOf(dk_state) != -1) {
                 hidden = true;
             }
@@ -165,7 +169,9 @@ $(() => {
                 $action_btn.disabled(false);
             }
             $(`[data-singin-classroom-oid="${student.oid}"] .singin-student-icon`).text(state_icon(student));
-            $(`[data-singin-classroom-oid="${student.oid}"]`)[hidden ? 'hide' : 'show']();
+            if(!force_consistency || !consistency) {
+                $(`[data-singin-classroom-oid="${student.oid}"]`)[hidden ? 'hide' : 'show']();
+            }
 
             if(!consistency) {
                 $(`[data-singin-classroom-oid="${student.oid}"] .singin-student-action`).on('click', () => {

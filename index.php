@@ -3,7 +3,7 @@
 error_reporting(E_ALL & (~E_NOTICE));
 
 define('IN_SYSTEM', "WMSDFCL\\Singin2\\Punctuality");
-define('VERSION', '1.1.6');
+define('VERSION', '1.1.6-hf3');
 
 define('DIR', rtrim(str_replace("\\",'/',__DIR__), '/') . '/');
 define('DATA_PATH', DIR . 'data/');
@@ -28,6 +28,9 @@ require(LIB . 'config_default.php');
 require(FUNC . 'index.php');
 require(LIB . 'i18n/i18nCore.php');
 require(LIB . 'router/DataDrivenRouter.router.php');
+
+create_dir(DATA_PATH . 'i18n');
+create_dir(DATA_PATH . 'log');
 
 // 检查操作系统
 if(PHP_OS != 'WINNT') {

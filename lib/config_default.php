@@ -1,3 +1,4 @@
+
 <?php if(!defined('IN_SYSTEM')) exit;//Silence is golden ?><?php
 
 require(DIR . 'internal_config/config.php');
@@ -21,8 +22,9 @@ function _C($key) {
 			// 系统编码
 			'system_locale' => 'GBK',
 
-			// 允许教室打卡撤销
-			'classroom_allow_revoke' => false,
+			// 教室打卡界面选项
+			'classroom_allow_revoke' => false, // 允许教室打卡撤销
+			'classroom_filter_force_consistency' => true, // 状态变更时保持筛选列表不变，防止误操作
 			
 			// 晨跑打卡机信息
 			'hz2zrun_host' => 'http://192.168.1.180:8083', // 必须有协议标记，末尾不要有斜杠。
@@ -42,6 +44,7 @@ function _C($key) {
 function _C_public_values() {
 	return [
 		'classroom_allow_revoke',
+		'classroom_filter_force_consistency',
 		'hz2zrun_name',
 		'tradition_allow_teacher',
 		'tradition_allow_other',

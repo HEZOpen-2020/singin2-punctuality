@@ -7,6 +7,7 @@ ui.loading = Loading
 ui.yes = Yes
 ui.no = No
 ui.abort = Abort
+ui.developing = Work In Progress
 
 # Navigation
 app.console = Console
@@ -74,6 +75,32 @@ tradition.fail.tips = Failed to load classes data.<br />Make sure you have synch
 tradition.reload = Retry
 tradition.show_more = Show More
 tradition.show_less = Show Less
+
+# Hz2zrun
+hz2zrun.title = Run Signin
+hz2zrun.alpha = α - Bye Blue Version
+hz2zrun.click_more = Click more to open morning run singin.
+hz2zrun.section.sync = Student Sync
+hz2zrun.action.sync = Sync
+hz2zrun.section.record = Singin Records
+hz2zrun.action.view = View
+hz2zrun.action.export = Export
+hz2zrun.action.upload = Upload
+hz2zrun.view.title = ${0} ${1}
+hz2zrun.upload.title = Upload ${0} ${1}
+hz2zrun.upload.select = Please select the machine info used in this upload.
+hz2zrun.upload.already = Uploaded Today
+hz2zrun.already.title = Uploaded Today
+hz2zrun.already.desc = Record ${0} ${1} is already uploaded using this machine info today.<br />Duplicate uploading is not recommended. Continue anyway?
+hz2zrun.wait.desc = Please wait until the upload finishes!
+hz2zrun.done.title = Uploaded
+hz2zrun.done.desc = Uploaded ${0} ${1} using machine info ${2}.<br />Response data is written into the log, please check.
+hz2zrun.error.fail = Upload failed.
+hz2zrun.error.tan90 = This record does not exist.
+hz2zrun.sync_done.desc = Sync finished.
+hz2zrun.sync_fail.desc = Cannot sync.
+hz2zrun.type.card = Card
+hz2zrun.type.check = Check
 
 # Status
 status.title = System Status
