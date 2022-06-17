@@ -52,7 +52,7 @@ $(async () => {
 	window.stop_terminal = async () => {
 		$('.singin-stop-terminal, .singin-start-terminal').disabled(true);
 		var rid = stop_terminal_t = random_ele_id();
-		var data = await fetch_json(G.basic_url + 'api/system/terminal/stop');
+		var data = await post_json(G.basic_url + 'api/system/terminal/stop');
 		if(data === null) {
 		    mdui.snackbar(LNG('status.toast.except'), {timeout: 2000});
 		    return;
@@ -72,7 +72,7 @@ $(async () => {
 	window.start_terminal = async () => {
 		$('.singin-start-terminal, .singin-stop-terminal').disabled(true);
 		var rid = stop_terminal_t = random_ele_id();
-		var data = await fetch_json(G.basic_url + 'api/system/terminal/start');
+		var data = await post_json(G.basic_url + 'api/system/terminal/start');
 		if(data === null) {
 		    mdui.snackbar(LNG('status.toast.except'), {timeout: 2000});
 		    return;
@@ -131,6 +131,6 @@ $(() => {
 	    state = await mdui.confirm_async(LNG('status.reboot.2'), LNG('status.reboot.title'));
 	    if(!state) return;
 	    mdui.snackbar(LNG('status.toast.reboot'))
-	    fetch_json(G.basic_url + 'api/system/reboot');
+	    post_json(G.basic_url + 'api/system/reboot');
 	});
 });

@@ -19,17 +19,29 @@ function _C($key) {
 			'proc_name' => 'SmartBoard.exe',
 			'proc_path' => 'C:/Program Files (x86)/SmartBoard/SmartBoard.exe',
 			
-			// 系统编码
-			'system_locale' => 'GBK',
+			// 系统配置
+			'system_locale' => 'GBK', // 编码
+			'csrf_bypass' => false, // 绕过 CSRF 攻击检测，调试用
 
 			// 教室打卡界面选项
 			'classroom_allow_revoke' => false, // 允许教室打卡撤销
 			'classroom_filter_force_consistency' => true, // 状态变更时保持筛选列表不变，防止误操作
 			
-			// 晨跑打卡机信息
-			'hz2zrun_host' => 'http://192.168.1.180:8083', // 必须有协议标记，末尾不要有斜杠。
-			'hz2zrun_name' => 'runhand20190816170251',
-			'hz2zrun_type' => 0, // 0=进, 1=出, 2=未识别
+			// 晨跑第一打卡机信息（入点，同时用于人员同步）
+			'hz2zrun_host1' => 'http://192.168.1.180:8083', // 必须有协议标记，末尾不要有斜杠。
+			'hz2zrun_name1' => 'runhand23',
+			'hz2zrun_type1' => 1, // 0=出, 1=进, 2=未识别
+			// 晨跑第二打卡机信息（出点）
+			'hz2zrun_host2' => 'http://192.168.1.180:8083',
+			'hz2zrun_name2' => 'runhand24',
+			'hz2zrun_type2' => 0,
+			// 晨跑考勤人员数量
+			'hz2zrun_fixed_count' => 10, // 每个活跃班级要求固定成员的数量
+			'hz2zrun_temp_count' => 8, // 每个未排除班级抽取随机成员的数量
+			// 晨跑考勤时间（用于生成刷卡时间，格式为当天 00:00 之后的秒数）
+			'hz2zrun_start' => 6 * 3600 + 23 * 60, // 晨跑考勤开始时间
+			'hz2zrun_end' => 6 * 3600 + 44 * 60, // 晨跑考勤结束时间
+			'hz2zrun_check_rate' => 0.00, // 生成的考勤记录中补签的概率（若已知补签系统有问题请设置为 0）
 
 			// 传统艺能设置
 			'tradition_allow_teacher' => false, // 允许查看教职工部门

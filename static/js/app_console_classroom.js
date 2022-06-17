@@ -328,7 +328,7 @@ $(() => {
 
             if(success_count > 0) {
                 if(await mdui.confirm_async(LNG('cls.alert.restart.1', success_count, failure_count), LNG('cls.alert.restart.title'))) {
-                    var data = await fetch_json(G.basic_url + 'api/system/terminal/restart');
+                    var data = await post_json(G.basic_url + 'api/system/terminal/restart');
                     if(!data) {
                         mdui.snackbar(LNG('status.toast.except'), {timeout: 2000});
                     } else if(data.code == 500) {

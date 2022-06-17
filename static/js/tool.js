@@ -139,6 +139,11 @@ function fetch_json(url) {
 }
 function post_json(url, data) {
 	return new Promise((resolve, reject) => {
+		if(data === null || data === undefined) {
+			data = {};
+		}
+		data['csrf-token-name'] = G.csrf.sess;
+		data['csrf-token-value'] = G.csrf.token;
 		$.ajax({
 			method: 'POST',
 			data: data,
@@ -153,6 +158,9 @@ function post_json(url, data) {
 				});
 			},
 			success: (t) => {
+				if(t.code == 429) {
+					mdui.snackbar(LNG('ui.csrf_fail'), {timeout: 2000});
+				}
 				resolve(t);
 			}
 		});

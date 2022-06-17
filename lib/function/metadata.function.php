@@ -82,8 +82,8 @@ function hz2zrun_prepare_data() {
         }
     }
     
-    $api = _C('hz2zrun_host') . '/Services/Identification/GetAllCard/Json';
-    $indata = ['tCode' => _C('hz2zrun_name'), 'datamd5' => ''];
+    $api = _C('hz2zrun_host1') . '/Services/Identification/GetAllCard/Json';
+    $indata = ['tCode' => _C('hz2zrun_name1'), 'datamd5' => ''];
     $data = post_submit($api, [], $indata, true);
     
     @$data = json_decode($data, true);
@@ -97,7 +97,21 @@ function hz2zrun_prepare_data() {
         unlock_data(DATA_PATH . 'hz2zrun/student');
         return [false, 'Bad data format.'];
     }
+
+    $datapath = DATA_PATH . 'hz2zrun/participant/selection.json';
+    $has_participant = file_exists($datapath);
+    $participant_info = null;
+    if($has_participant) {
+        wait_data($datapath);
+        lock_data($datapath);
+        $participant_info = data_read($datapath);
+    }
     
+    $new_participant = [
+        'active_classes' => [],
+        'passive_classes' => [],
+        'fixed_students' => []
+    ];
     $classes_data = [];
     $student_data = [];
     $data = $data['result']['data'];
@@ -113,6 +127,13 @@ function hz2zrun_prepare_data() {
             $departs[$item['DepartID']] = [
                 'name' => $item['DepartName']
             ];
+            if($has_participant) {
+                if($participant_info['active_classes'][$item['DepartID']]) {
+                    $new_participant['active_classes'][$item['DepartID']] = true;
+                } else if($participant_info['passive_classes'][$item['DepartID']]) {
+                    $new_participant['passive_classes'][$item['DepartID']] = true;
+                }
+            }
             $student_data[$item['DepartID']] = [];
         }
         
@@ -138,6 +159,10 @@ function hz2zrun_prepare_data() {
         unset($item['UserIdNum']);
         
         $student_data[$item['DepartID']][$item['UserID']] = $item;
+
+        if($participant_info['fixed_students'][$item['UserID']]) {
+            $new_participant['fixed_students'][$item['UserID']] = true;
+        }
     }
     
     $path_classes = DATA_PATH . 'hz2zrun/student/_classes.json';
@@ -149,10 +174,13 @@ function hz2zrun_prepare_data() {
         create_file($path_students);
         data_write($path_students, $items);
     }
+
+    data_write($datapath, $new_participant);
     
     unlink($lock_path);
     unlock_data(DATA_PATH . 'hz2zrun/student');
-    return ['true', 'Data synchronized.'];
+    unlock_data($datapath);
+    return [true, 'Data synchronized.'];
 }
 
 function hz2zrun_get_classes() {
@@ -165,4 +193,78 @@ function hz2zrun_get_classes() {
     }
     
     return data_read($path);
+}
+
+function hz2zrun_get_full() {
+    $datapath = DATA_PATH . 'hz2zrun/participant/selection.json';
+    if(!file_exists($datapath)) {
+        create_file($datapath);
+        $nullarr = ['a' => 0];
+        unset($nullarr['a']);
+        file_put_contents($datapath, data_json_encode([
+            'active_classes' => $nullarr,
+            'passive_classes' => $nullarr,
+            'fixed_students' => $nullarr
+        ]));
+    }
+    
+    $classpath = DATA_PATH . 'hz2zrun/student/_classes.json';
+    if(!file_exists($classpath)) {
+        return null;
+    }
+
+    wait_data($datapath);
+    $participant_info = data_read($datapath);
+    $classes_data = data_read($classpath);
+
+    $ret = [];
+    foreach($classes_data as $grade_id => $grade) {
+        if($grade['name'] == '') continue;
+        foreach($grade['departs'] as $depart_id => $depart) {
+            $departpath = DATA_PATH . 'hz2zrun/student/' . $depart_id . '.json';
+            $students = data_read($departpath);
+            $count = 0;
+            $students_meta = [];
+            foreach($students as $stu_id => $stu) {
+                $stu['State'] = 'excluded';
+                if($participant_info['fixed_students'][$stu_id]) {
+                    $count += 1;
+                    $stu['State'] = 'fixed';
+                }
+                unset($stu['IsTeacher']);
+                unset($stu['Master']);
+                $students_meta[] = $stu;
+            }
+            $depart_meta = [
+                'Name' => $depart['name'],
+                'GradeID' => $grade_id,
+                'DepartID' => $depart_id,
+                'State' => (
+                    $participant_info['active_classes'][$depart_id] ? 'active'
+                    : ($participant_info['passive_classes'][$depart_id] ? 'passive'
+                    : 'excluded')
+                ),
+                'TotalCount' => count($students_meta),
+                'FixedCount' => $count,
+                'Students' => $students_meta
+            ];
+
+            $ret[] = $depart_meta;
+        }
+    }
+
+    return $ret;
+}
+
+function hz2zrun_save_selection($data) {
+    $data1 = [
+        'active_classes' => $data['active_classes'],
+        'passive_classes' => $data['passive_classes'],
+        'fixed_students' => $data['fixed_students']
+    ];
+    $datapath = DATA_PATH . 'hz2zrun/participant/selection.json';
+    wait_data($datapath);
+    lock_data($datapath);
+    data_write($datapath, $data1);
+    unlock_data($datapath);
 }

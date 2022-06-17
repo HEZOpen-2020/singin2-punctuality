@@ -12,18 +12,22 @@
 				'terminal': {
 					children: {
 						'start': {
-							dest: 'api/terminal_start'
+							dest: 'api/terminal_start',
+							csrf: true
 						},
 						'stop': {
-							dest: 'api/terminal_stop'
+							dest: 'api/terminal_stop',
+							csrf: true
 						},
 						'restart': {
-							dest: 'api/terminal_restart'
+							dest: 'api/terminal_restart',
+							csrf: true
 						}
 					}
 				},
 				'reboot': {
-				    dest: 'api/reboot'
+				    dest: 'api/reboot',
+					csrf: true
 				},
 				'log': {
 					dest: 'api/log'
@@ -42,7 +46,8 @@
 		            dest: 'api/classroom/singing-students'
 		        },
 				'submit-marking': {
-					dest: 'api/classroom/submit-marking'
+					dest: 'api/classroom/submit-marking',
+					csrf: true
 				}
 		    }
 		},
@@ -50,17 +55,39 @@
 		    children: {
 		        'student': {
 		            children: {
-		                'sync': {
+		                'sync': { // 人员同步
 		                    dest: 'api/hz2zrun/student-sync'
 		                },
-		                'classes': {
+		                'classes': { // 不带标记的班级信息
 		                    dest: 'api/hz2zrun/classes'
 		                },
-		                'students': {
+		                'students': { // 不带标记的单个班级人员信息
 		                    dest: 'api/hz2zrun/students'
-		                }
-		            }   
-		        }
+		                },
+						'singin-full': { // 带标记的全部信息（考勤专用/删减版）
+							dest: 'api/hz2zrun/singin-full'
+						},
+						'save-selection': { // 保存选择信息
+							dest: 'api/hz2zrun/save-selection',
+							csrf: true
+						}
+		            }
+		        },
+				'record': {
+					children: {
+						'list': { // 未完成提交的考勤记录列表（仅一天内）
+							dest: 'api/hz2zrun/record-list'
+						},
+						'gen': { // 生成考勤记录并给出 ID
+							dest: 'api/hz2zrun/record-gen',
+							csrf: true
+						},
+						'upload': { // 请求上传考勤记录（提供设备编号和记录 ID）
+							dest: 'api/hz2zrun/record-upload',
+							csrf: true
+						}
+					}
+				}
 		    }
 		},
 		'dbtest': {

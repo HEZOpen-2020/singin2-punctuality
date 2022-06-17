@@ -13,8 +13,7 @@ $students = get_students();
 $op_lock = 2;
 foreach($students as &$student_item) {
 	if($student_item['dk_time'] != null) {
-		$op_lock = $student_item['op_lock'];
-		break;
+		$op_lock = max($op_lock, $student_item['op_lock'] + 1);
 	}
 }
 
@@ -47,13 +46,15 @@ if($_REQUEST['mark'] == 'card') {
 		"update [上课考勤] set "
 		. "[打卡时间]='" . $dk_time . "',"
 		. "[打卡方式]=0,"
-		. "[面部识别结果]=0"
+		. "[面部识别结果]=0,"
+		. "[OptimisticLockField]=" . $op_lock
 		. " where [KeChengXinXi]='" . $_REQUEST['lesson'] . "' and [OID]='" . $_REQUEST['oid'] . "';"
 	);
 	if($data['success']) {
 		log_write('CLASSROOM', 'Written ' . $hash . ' as "card".');
 		show_json(200, 'Record written.');
 	} else {
+		log_write('CLASSROOM', 'Failed writing ' . $hash . ' as "card".');
 		show_json(500, $data['data']);
 	}
 } else if($_REQUEST['mark'] == 'face') {
@@ -66,13 +67,15 @@ if($_REQUEST['mark'] == 'card') {
 		"update [上课考勤] set "
 		. "[打卡时间]='" . $dk_time . "',"
 		. "[打卡方式]=1,"
-		. "[面部识别结果]=" . $face_score . ""
+		. "[面部识别结果]=" . $face_score . ","
+		. "[OptimisticLockField]=" . $op_lock
 		. " where [KeChengXinXi]='" . $_REQUEST['lesson'] . "' and [OID]='" . $_REQUEST['oid'] . "';"
 	);
 	if($data['success']) {
 		log_write('CLASSROOM', 'Written ' . $hash . ' as "face".');
 		show_json(200, 'Record written.');
 	} else {
+		log_write('CLASSROOM', 'Failed writing ' . $hash . ' as "face".');
 		show_json(500, $data['data']);
 	}
 	
@@ -87,13 +90,15 @@ if($_REQUEST['mark'] == 'card') {
 		"update [上课考勤] set "
 		. "[打卡时间]=null,"
 		. "[打卡方式]=0,"
-		. "[面部识别结果]=0"
+		. "[面部识别结果]=0,"
+		. "[OptimisticLockField]=" . $op_lock
 		. " where [KeChengXinXi]='" . $_REQUEST['lesson'] . "' and [OID]='" . $_REQUEST['oid'] . "';"
 	);
 	if($data['success']) {
 		log_write('CLASSROOM', 'Revoked ' . $hash . '.');
 		show_json(200, 'Record written.');
 	} else {
+		log_write('CLASSROOM', 'Failed revoking ' . $hash . '.');
 		show_json(500, $data['data']);
 	}
 } else {

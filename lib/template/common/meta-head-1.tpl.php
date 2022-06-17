@@ -27,6 +27,10 @@
 			'app_name' => APP_NAME,
 			'app_prefix' => APP_PREFIX,
 			'app_info' => app_get_all(),
+			'csrf' => [
+				'sess' => $GLOBALS['sess'],
+				'token' => $GLOBALS['token']
+			],
 			'public_config' => $public_values
 		]) ?>;
 	</script>

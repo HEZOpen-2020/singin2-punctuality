@@ -27,7 +27,8 @@
 		'id' => 'run-dk',
 		'icon' => 'directions_run',
 		'label' => LNG('nav.item.run'),
-		'hidden' => true
+		'hidden' => true,
+		// 'selected' => true
 	],
 	[
 		'group_label' => LNG('nav.cate.system')
@@ -265,8 +266,9 @@
 	load_js('js/app_console');
 	load_js('js/app_console_classroom');
 	load_js('js/app_console_tradition');
+	load_js('js/app_console_hz2zrun');
 	show_app_title('console');
-	show_theme_color('blue-grey', 'blue');
+	show_theme_color('indigo', 'pink');
 ?>
 <script>$('.singin-about-name').text(G.app_name);$('.singin-about-version').text(G.version)</script>
 <?php tpl('common/meta-foot'); ?>

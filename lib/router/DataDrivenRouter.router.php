@@ -5,6 +5,31 @@ use function WMSDFCL\Singin2\Punctuality\router_variable\check_url_variable;
 require(LIB . 'router/variable/router_variable.php');
 
 /**
+ * 检查CSRF攻击（不返回，错误即终止）
+ */
+function checkCSRF($isCheck) {
+	if($isCheck && !_C('csrf_bypass')) {
+		if(!isset($_COOKIE['X-'.APP_PREFIX.'-csrf'][$_REQUEST['csrf-token-name']]) || $_COOKIE['X-'.APP_PREFIX.'-csrf'][$_REQUEST['csrf-token-name']] !== $_REQUEST['csrf-token-value']) {
+			show_json(429, 'Missing CSRF token.');
+			exit;
+		}
+	}
+	if(!is_array($_COOKIE['X-'.APP_PREFIX.'-csrf']) || count($_COOKIE['X-'.APP_PREFIX.'-csrf'])==0) {
+		$GLOBALS['sess'] = md5(rand()); // 创建新会话
+		$GLOBALS['token'] = md5(rand());
+		setcookie('X-'.APP_PREFIX.'-csrf['.$GLOBALS['sess'].']',$GLOBALS['token'],time()+86400,'/');
+	} else {
+		if(is_array($_COOKIE['X-'.APP_PREFIX.'-csrf'])) {
+			foreach($_COOKIE['X-'.APP_PREFIX.'-csrf'] as $k=>$v) {
+				$GLOBALS['sess']=$k;
+				$GLOBALS['token']=$v;
+				break;
+			}
+		}
+	}
+}
+
+/**
  * 页面判断与分发
  * 采用数据驱动方式，详见 lib/router/map/root.json 和 lib/router/variable/router_variable.php
  * 添加新页面时，此程序无需修改。
@@ -46,6 +71,7 @@ class DataDrivenRouter {
 		$currdir = __DIR__ . '/map/';
 		$curr = json5_decode_file($currdir . 'root.json5', true);
 		$curr_url = trim(strip_after($_GET['_lnk'],'?'));
+		$require_csrf = false;
 
 		while(true) {
 			while(isset($curr['target'])) {
@@ -54,6 +80,9 @@ class DataDrivenRouter {
 					foreach($curr['param'] as $key => $item) {
 						$_REQUEST[$key] = $_GET[$key] = $item;
 					}
+				}
+				if(isset($curr['csrf']) && $curr['csrf']) {
+					$require_csrf = true;
 				}
 				// 文件调用
 				$filename = $currdir . $curr['target'];
@@ -66,10 +95,14 @@ class DataDrivenRouter {
 					$_REQUEST[$key] = $_GET[$key] = $item;
 				}
 			}
+			if(isset($curr['csrf']) && $curr['csrf']) {
+				$require_csrf = true;
+			}
 			if(strlen($curr_url) == 0) {
 				// 完成。
 				if(isset($curr['dest'])) {
 					$_REQUEST['_dest'] = $_GET['_dest'] = $curr['dest'];
+					checkCSRF($require_csrf);
 					$this->openController($curr['dest']);
 					return;
 				}

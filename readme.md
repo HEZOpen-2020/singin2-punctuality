@@ -4,8 +4,8 @@ Singin! punctuality
 ![][version] ![][license] ![][build_date]  
 ![][modloader]![][modloader_1]
 
-[version]: https://img.shields.io/badge/Version-1.1.7-green.svg?style=flat-square
-[build_date]: https://img.shields.io/badge/Build%20Date-20220533-darkblue.svg?style=flat-square
+[version]: https://img.shields.io/badge/Version-1.2.0%20WIP-violet.svg?style=flat-square
+[build_date]: https://img.shields.io/badge/Build%20Date-20220617-darkblue.svg?style=flat-square
 [modloader]: https://img.shields.io/badge/Base%20Technology-Apache/PHP-orange.svg?style=flat-square
 [modloader_1]: https://img.shields.io/badge/C++-red.svg?style=flat-square
 [side]: https://img.shields.io/badge/Side-client-yellow.svg?style=flat-square
@@ -21,7 +21,7 @@ Because the project is the continuation of another project, whose name is also s
 
 ## Are my devices qualified?
 
-### Compiling (for the C++ part)
+### Preparation Environment
 
 - Windows 7 or higher versions, 64 bits
 - GNU C++ Compiler with C++17 support
@@ -47,38 +47,7 @@ The project uses [SQLite3MultipleCiphers](https://github.com/utelle/SQLite3Multi
 
 ## How to setup?
 
-### Compile C++ Part
-
-1. Make sure you have a GNU C++ Compiler with C++17 support.
-2. Head to `ext/dbmanip` directory, and run `_compile_dbquery.bat`.
-3. Check the output `dbquery.exe`.
-
-You may find that `dbquery.exe` is already in the directory. It is a precompiled version for those who didn't manage to compile it.
-
-### Server Preparation
-
-1. Prepare installer of the Apache environment (you can use Wampserver).
-2. Download the `DesktopLaunchDaemon.zip`.
-3. Put all your compiled code, along with the two files above and the installer of a code editor (you may need this) into a removable medium.
-4. Plug your medium into the server (you may need some techniques to do this).
-5. Unzip `DesktopLaunchDaemon.zip` to `C:\SystemComponent\DesktopLaunchDaemon\`, and set `DesktopLaunchDaemon.exe` to start on boot.  
-   For this, you cannot uses the task scheduler. You could put the shortcut of `DesktopLaunchDaemon.exe` into `Startup` folder.
-6. Install Apache environment.
-7. Configure httpd to start on boot.
-8. Check the IP address of your client, and edit `httpd.conf` to make the server accept it.
-9. Put all your compiled code (except `DesktopLaunchDaemon.zip`) into the web document directory (not necessarily at document root).
-10. Rename `data.init` folder to `data`.
-11. Remove your medium from the server.
-
-### Server Installation
-
-1. Open `.htaccess` using a proper editor and set `RewriteBase`.  
-   For example, if the web URL is `http://10.241.1.9:88/app/singin/`, you should write `RewriteBase /app/singin/`.
-2. In `.htaccess`, set a proper `.htpasswd` file, or remove the first section if you don't need password protection (this is not recommended).
-3. Find `localData.db` on the server and crack password (cracking the password does not need any tool, though).
-4. Rename `internal_config/config.sample.php` to `config.php`, set the `BASIC_URL` constant and other items properly.  
-   Check `lib/config_default.php` for more available options.
-5. Check the IP address of the server, and access the web URL using a browser on the client to see if there's any errors.
+This is sort of complicated. See [setup guide](./doc/setup.md).
 
 ## How to use?
 
@@ -115,3 +84,13 @@ Check `data/hz2zrun/student/_classes.json` and set other configurations.
 Then you can see birthday info on the page.
 
 *Enjoy, and Good Luck : )*
+
+## You may want to ask this
+
+**Q: Is this safe?**
+
+A: Generally not. The patcher is highly specific and may be broken by automatic game updates (or even worse, break the updated game).
+
+**Q: Will classroom singin be fully automated in the future?**
+
+A: Probably not. The conditions are complicated, and full automation is likely to make deadly mistakes.
