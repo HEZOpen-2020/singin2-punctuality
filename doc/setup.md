@@ -54,7 +54,7 @@ Extra steps if you want to use Traditional Ability or Run Singin<sup>[WIP]</sup>
 ### Install Software
 
 1. Plug your USB stick into the server.
-2. Unzip `DesktopLaunchDaemon.zip` to `C:\SystemComponent\DesktopLaunchDaemon\`, and set `DesktopLaunchDaemon.exe` to start on boot.  
+2. Unzip `DesktopLaunchDaemon.zip` to `C:\SystemComponent\DesktopLaunch\`, and set `DesktopLaunchDaemon.exe` to start on boot.  
    Note: For this, you cannot uses the task scheduler. You could put the shortcut of `DesktopLaunchDaemon.exe` into `Startup` folder.
 3. Install Apache environment.
 4. Configure httpd to start on boot.  
