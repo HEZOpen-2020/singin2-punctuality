@@ -63,6 +63,8 @@ You can use the buttons at the bottom of the page to start/stop GS.Terminal, and
 
 ### Classroom Check-in
 
+![](./doc/image/ss_classroom.png)
+
 Once a checking-in lesson is detected, it will show up on the Classroom Check-in page.
 
 Click the button under the name to change the state of a participant. If the icon at the lower-right corner is a tag, you could click on it to toggle check-in type.
@@ -72,6 +74,8 @@ After clicking, hover on the floating button and click the send icon. Changes wi
 If something funny happens, check the output of the API using the browser Network panel.
 
 ### Traditional Ability
+
+![](./doc/image/ss_tradition.png)
 
 This function is used for notifying birthdays, so we can have Arubas more precisely.
 
