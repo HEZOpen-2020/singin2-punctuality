@@ -221,7 +221,7 @@ function picture_polygon(&$im,$col,$points) {
 		unify_length($unified_points[$i<<1]);
 		unify_length($unified_points[$i<<1|1]);
 	}
-	imageFilledPolygon($im,$unified_points,$npoints,$col);
+	imageFilledPolygon($im,$unified_points,$col);
 }
 
 /**
@@ -391,8 +391,8 @@ function picture_text(&$im,$text,$font,$size,$angle,$col,$x,$y,$anchor='left',$w
 		$im,
 		$size,
 		$angle,
-		$x,
-		$y,
+		intval($x),
+		intval($y),
 		$col,
 		$font,
 		$text

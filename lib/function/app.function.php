@@ -71,7 +71,7 @@ function app_nav($id, $pages) {
 						<?php
 					} else {
 						?>
-						<li class="mdui-list-item mdui-ripple mdui-page-select singin-page-select <?php if($page['selected']) echo 'mdui-list-item-active mdui-color-theme-100 mdui-text-color-theme-900' ?>" data-singin-page="<?php echo htmlspecial($page['id']) ?>" <?php if($page['selected']) echo 'data-singin-page-selected' ?> <?php if($page['hidden']) echo 'data-singin-page-hidden style="display: none;"' ?> <?php if($page['hidden_target']) echo 'data-singin-hidden-target="' . htmlspecial($page['hidden_target']) . '"' ?>>
+						<li class="mdui-list-item mdui-ripple mdui-page-select singin-page-select <?php if($page['selected'] ?? false) echo 'mdui-list-item-active mdui-color-theme-100 mdui-text-color-theme-900' ?>" data-singin-page="<?php echo htmlspecial($page['id']) ?>" <?php if($page['selected'] ?? false) echo 'data-singin-page-selected' ?> <?php if($page['hidden'] ?? false) echo 'data-singin-page-hidden style="display: none;"' ?> <?php if($page['hidden_target'] ?? null) echo 'data-singin-hidden-target="' . htmlspecial($page['hidden_target']) . '"' ?>>
 							<i class="mdui-list-item-icon mdui-icon material-icons"><?php echo htmlspecial($page['icon']) ?></i>
 							<div class="mdui-list-item-content"><?php echo htmlspecial($page['label']) ?></div>
 						</li>

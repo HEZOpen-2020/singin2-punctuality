@@ -57,7 +57,8 @@ function _C_public_values() {
 	return [
 		'classroom_allow_revoke',
 		'classroom_filter_force_consistency',
-		'hz2zrun_name',
+		'hz2zrun_name1',
+		'hz2zrun_name2',
 		'tradition_allow_teacher',
 		'tradition_allow_other',
 		'tradition_here',

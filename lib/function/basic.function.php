@@ -4,29 +4,29 @@
  * 目录列表
  */
 function dir_list($dir) {
-    $arr1 = scandir($dir);
-    $arr = [];
-    foreach($arr1 as $item) {
-        if($item == '.' || $item == '..') {
-            continue;
-        }
-        $arr[] = $item;
-    }
-    return $arr;
+	$arr1 = scandir($dir);
+	$arr = [];
+	foreach($arr1 as $item) {
+		if($item == '.' || $item == '..') {
+			continue;
+		}
+		$arr[] = $item;
+	}
+	return $arr;
 }
 
 /**
  * 键映射
  */
 function csv_map_key(&$data, $headers) {
-    $ret = [];
-    foreach($data as &$line) {
-        $ret[] = [];
-        foreach($line as $k => &$v) {
-            $ret[count($ret) - 1][$headers[$k]] = $v;
-        }
-    }
-    return $ret;
+	$ret = [];
+	foreach($data as &$line) {
+		$ret[] = [];
+		foreach($line as $k => &$v) {
+			$ret[count($ret) - 1][$headers[$k]] = $v;
+		}
+	}
+	return $ret;
 }
 
 /**
