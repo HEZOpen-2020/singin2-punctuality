@@ -108,7 +108,7 @@ class DataDrivenRouter {
 				}
 			}
 			$success = false;
-			if($curr['children']) foreach($curr['children'] as $cond => $next) {
+			if($curr['children'] ?? null) foreach($curr['children'] as $cond => $next) {
 				$firstword = strip_after($curr_url, '/');
 				if($cond == '#path') {
 					// 末尾路径参数，一步到位
