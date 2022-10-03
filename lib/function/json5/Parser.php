@@ -123,6 +123,7 @@ class Parser {
     $res = [];
     while ($json5 !== "") {
       $this->parse_comment($json5, $res);
+      $json5 = ltrim($json5);
       if (strncmp($json5, "]", 1) === 0) {
         $json5 = substr($json5, 1);
         break;
@@ -164,7 +165,7 @@ class Parser {
     return $this->returnObject($res);
   }
 
-  protected  function commentToken(&$str, $spl, $while = false, $preWhile = false) {
+  protected  function commentToken(&$str, $spl, $while = [], $preWhile = false) {
 	  $result = '';
       if($preWhile){
         $i = 0;
