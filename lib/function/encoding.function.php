@@ -70,6 +70,13 @@ function data_json_encode($data) {
 }
 
 /**
+ * HTML JSON 数据编码（）
+ */
+function html_json_encode($data) {
+	return str_replace(['<', '>'], ["\\x3c", "\\x3e"], json_encode($data,JSON_PRETTY_PRINT * is_dev() + JSON_UNESCAPED_SLASHES + JSON_UNESCAPED_UNICODE));
+}
+
+/**
  * 读取 JSON 数据
  */
 function data_read($path) {

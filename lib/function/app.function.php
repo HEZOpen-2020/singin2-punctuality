@@ -24,7 +24,7 @@ function app_get($id) {
 function show_app_title($id) {
 	show_icon(BASIC_URL . 'static/ico/app_' . $id . '.png');
 	show_title(LNG(app_get($id)['label']));
-	echo '<script>G.app_id = "' . addslashes($id) . '";</script>' . "\n";
+	echo '<script>G.app_id = "' . jsspecial($id) . '";</script>' . "\n";
 	echo '<script>G.app_instance_id = random_ele_id();</script>' . "\n";
 }
 

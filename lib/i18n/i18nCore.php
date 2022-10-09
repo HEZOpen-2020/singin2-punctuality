@@ -183,6 +183,13 @@ function LNGk($key = '', ...$templates) {
 }
 
 /**
+ * 语言键引号转义
+ */
+function LNGj($key = '', ...$templates) {
+	return jsspecial(LNG($key, ...$templates));
+}
+
+/**
  * 语言键文本输出
  */
 function LNGe($key = '', ...$templates) {

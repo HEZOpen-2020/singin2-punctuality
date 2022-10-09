@@ -44,11 +44,22 @@ function htmlspecial($str){
 }
 
 /**
+ * JS in HTML 特殊字符转换
+ */
+function jsspecial($str) {
+	return str_replace(
+		['<', '>', '`', '$'],
+		["\\x3c", "\\x3e", "\\x60", "\\x24"],
+		addslashes($str)
+	);
+}
+
+/**
  * 显示页面标题
  */
 function show_title($str) {
 	echo '<script>';
-	echo 'document.title="' . addslashes($str . ' - ' . APP_NAME) . '";';
+	echo 'document.title="' . jsspecial($str . ' - ' . APP_NAME) . '";';
 	echo '</script>';
 	echo "\n";
 }
@@ -58,7 +69,7 @@ function show_title($str) {
  */
 function show_icon($href) {
 	echo '<script>';
-	echo '$("#page-icon").attr("href", "' . addslashes($href) . '");';
+	echo '$("#page-icon").attr("href", "' . jsspecial($href) . '");';
 	echo '</script>';
 	echo "\n";
 }
@@ -68,8 +79,8 @@ function show_icon($href) {
  */
 function show_theme_color($primary, $accent) {
 	echo '<script>';
-	echo '$("body").addClass("mdui-theme-primary-' . addslashes($primary) . '");';
-	echo '$("body").addClass("mdui-theme-accent-' . addslashes($accent) . '");';
+	echo '$("body").addClass("mdui-theme-primary-' . jsspecial($primary) . '");';
+	echo '$("body").addClass("mdui-theme-accent-' . jsspecial($accent) . '");';
 	echo '</script>';
 	echo "\n";
 }

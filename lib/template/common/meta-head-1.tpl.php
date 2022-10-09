@@ -21,7 +21,7 @@
 				$public_values[$key] = _C($key);
 			}
 		?>
-		var G = <?php echo data_json_encode([
+		var G = <?php echo html_json_encode([
 			'basic_url' => BASIC_URL,
 			'version' => VERSION,
 			'app_name' => APP_NAME,
