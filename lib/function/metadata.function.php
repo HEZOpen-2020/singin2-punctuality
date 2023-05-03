@@ -130,9 +130,9 @@ function hz2zrun_prepare_data() {
 				'name' => $item['DepartName']
 			];
 			if($has_participant) {
-				if($participant_info['active_classes'][$item['DepartID']]) {
+				if($participant_info['active_classes'][$item['DepartID']] ?? null) {
 					$new_participant['active_classes'][$item['DepartID']] = true;
-				} else if($participant_info['passive_classes'][$item['DepartID']]) {
+				} else if($participant_info['passive_classes'][$item['DepartID']] ?? null) {
 					$new_participant['passive_classes'][$item['DepartID']] = true;
 				}
 			}
@@ -144,7 +144,9 @@ function hz2zrun_prepare_data() {
 		$item['Period'] = [
 			'走读生' => 'day',
 			'住校生' => 'week',
-			'常住生' => 'month'
+			'常住生' => 'month',
+			'长住生' => 'month',
+			'' => 'day',
 		][$item['ZDType']];
 		unset($item['ZDType']);
 		$item['SexChar'] = [
@@ -162,7 +164,7 @@ function hz2zrun_prepare_data() {
 		
 		$student_data[$item['DepartID']][$item['UserID']] = $item;
 
-		if($participant_info['fixed_students'][$item['UserID']]) {
+		if($participant_info['fixed_students'][$item['UserID']] ?? null) {
 			$new_participant['fixed_students'][$item['UserID']] = true;
 		}
 	}

@@ -1,4 +1,4 @@
-AuthUserFile E:/wamp64/hosts/PhpTests/dk/.htpasswd
+AuthUserFile D:/wamp64/hosts/experiments/project/dk/.htpasswd
 AuthType Basic
 AuthName "restricted"
 Order Deny,Allow
@@ -7,7 +7,7 @@ Require valid-user
 Satisfy any
 
 RewriteEngine On
-RewriteBase /dk/
+RewriteBase /project/dk/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule (.*) index.php?_lnk=$1&%{QUERY_STRING} [L]
